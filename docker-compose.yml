@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  nuxt3-boilerplace:
+    container_name: nuxt3-boilerplace
+    build:
+      dockerfile: ci/Dockerfile.dev
+    ports:
+      - "${PORT}:${PORT}"
+      - "${HMR_PORT}:24678"
+    volumes:
+      - ./:/nuxt
+    env_file:
+      - ./.env
+    command: pnpm dev
+    platform: linux/amd64
+    networks:
+      - nuxt3-boilerplate
+
+networks:
+  nuxt3-boilerplate:
+    external: true

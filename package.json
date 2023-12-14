@@ -1,0 +1,41 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "app": "pnpm --ignore-workspace-root-check",
+    "ui": "pnpm -F @app/ui",
+    "check": "npx nuxi typecheck",
+    "dev": "nuxt dev --port=${PORT} --host=0.0.0.0 --dotenv .env",
+    "build": "nuxt build",
+    "preview": "docker build -f ./ci/Dockerfile.prod . -t \"yeo-tiger-prod\" && docker run -p 8080:8080 \"yeo-tiger-prod\"",
+    "generate": "nuxt generate",
+    "postinstall": "nuxt prepare",
+    "start": "cross-env PORT=8080 cross-env HOST=0.0.0.0 node ./.output/server/index.mjs --dotenv .env.prod",
+    "upgrade": "nuxi upgrade --force"
+  },
+  "devDependencies": {
+    "@binochoi/eslint-config-typescript": "^0.0.12",
+    "@binochoi/eslint-config-vue3": "^0.0.8",
+    "@nuxt/devtools": "latest",
+    "@typescript-eslint/parser": "^6.13.2"
+  },
+  "dependencies": {
+    "@nuxtjs/tailwindcss": "^6.10.1",
+    "@pinia/nuxt": "^0.4.11",
+    "@vant/nuxt": "^1.0.4",
+    "@vueuse/core": "^10.7.0",
+    "@vueuse/nuxt": "^10.7.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.0",
+    "cross-env": "^7.0.3",
+    "dayjs": "^1.11.10",
+    "nuxt": "^3.8.1",
+    "nuxt-proxy-request": "^1.7.0",
+    "pinia": "^2.1.7",
+    "sass": "^1.69.5",
+    "vant": "^4.8.0",
+    "vue-final-modal": "^4.5.0",
+    "wretch": "^2.7.1"
+  }
+}
