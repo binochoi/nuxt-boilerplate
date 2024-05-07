@@ -15,7 +15,7 @@
     "upgrade": "nuxi upgrade --force"
   },
   "resolutions": {
-    "vue": "npm:vue@3.4.0-beta.3"
+    "vue": "npm:vue@3.4.27"
   },
   "devDependencies": {
     "@binochoi/eslint-config-typescript": "^0.0.12",
