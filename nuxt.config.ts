@@ -20,6 +20,7 @@ export default defineNuxtConfig({
   alias: {
     app: fileURLToPath(new URL('./app', import.meta.url)),
     server: fileURLToPath(new URL('./server', import.meta.url)),
+    global: fileURLToPath(new URL('./global', import.meta.url)),
   },
   build: {
     transpile: ['trpc-nuxt'],
@@ -58,9 +59,10 @@ export default defineNuxtConfig({
   },
   imports: {
     dirs: [
-      './global/constants',
+      // './global/constants',
       './layers',
       './hooks',
+      './utils',
     ],
     autoImport: true,
   },

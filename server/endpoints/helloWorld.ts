@@ -5,7 +5,7 @@ const schema = v.object({
   text: v.string(),
 });
 
-export const helloWorld = procedure
+export default procedure
   .input((i) => v.parse(schema, i))
   .query(
     ({ input }) => ({
