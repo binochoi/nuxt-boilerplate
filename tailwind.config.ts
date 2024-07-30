@@ -1,6 +1,6 @@
 /* eslint-disable global-require */
 import { type Config } from 'tailwindcss';
-import { generateColorPalette } from './src/utils/generateColorPalette';
+import { generateColorPalette } from './app/utils/generateColorPalette';
 
 export default {
   content: [

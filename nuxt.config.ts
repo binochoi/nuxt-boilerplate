@@ -8,5 +8,6 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@vueuse/nuxt',
   ],
-  srcDir: 'src/'
-})
+  srcDir: 'app/',
+  serverDir: 'server/',
+});
