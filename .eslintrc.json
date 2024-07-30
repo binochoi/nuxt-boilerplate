@@ -1,0 +1,18 @@
+{
+    "parser": "vue-eslint-parser",
+    "parserOptions": {
+      "parser": "@typescript-eslint/parser",
+      "sourceType": "module"
+    },
+    "extends": [
+      "@binochoi/eslint-config-typescript",
+      "@binochoi/eslint-config-vue3"
+    ],
+    "ignorePatterns": ["node_modules/"],
+    "rules": {
+      "@typescript-eslint/no-unused-vars": "warn",
+      "no-unused-vars": "warn",
+      "vue/no-undef-components": "off",
+      "consistent-return": "off"
+    }
+  }
