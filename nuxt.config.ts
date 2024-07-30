@@ -1,13 +1,69 @@
+import { fileURLToPath } from 'url';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: false },
   compatibilityDate: '2024-07-14',
   ssr: true,
+  devServer: {
+    port: Number(process.env.PORT),
+    host: '0.0.0.0',
+    // https: {
+    //   cert: './0.0.0.0.pem',
+    //   key: './0.0.0.0-key.pem',
+    // }
+  },
   modules: [
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
     '@vueuse/nuxt',
   ],
+  alias: {
+    app: fileURLToPath(new URL('./app', import.meta.url)),
+    server: fileURLToPath(new URL('./server', import.meta.url)),
+  },
+  build: {
+    transpile: ['trpc-nuxt'],
+  },
+  runtimeConfig: {
+    public: {
+      appName: 'Nuxt 3 Boilerplate',
+    },
+  },
+  app: {
+    head: {
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no',
+    },
+  },
+  vite: {
+    vue: {
+      script: {
+        defineModel: true,
+      },
+    },
+    server: {
+      hmr: {
+        protocol: 'ws',
+        port: Number(process.env.HMR_PORT || 24678),
+        host: '0.0.0.0',
+      },
+    },
+  },
+  typescript: {
+    tsConfig: {
+      compilerOptions: {
+        verbatimModuleSyntax: false,
+      },
+    },
+  },
+  imports: {
+    dirs: [
+      './global/constants',
+      './layers',
+      './hooks',
+    ],
+    autoImport: true,
+  },
   srcDir: 'app/',
   serverDir: 'server/',
 });
