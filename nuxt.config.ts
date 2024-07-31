@@ -2,7 +2,7 @@ import { fileURLToPath } from 'url';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: false },
-  compatibilityDate: '2024-07-14',
+  compatibilityDate: '2024-07-31',
   ssr: true,
   devServer: {
     port: Number(process.env.PORT),
@@ -29,6 +29,9 @@ export default defineNuxtConfig({
     public: {
       appName: 'Nuxt 3 Boilerplate',
     },
+    googleOauthClient: '',
+    googleOauthSecret: '',
+    oAuthredirectUrl: '',
   },
   app: {
     head: {
