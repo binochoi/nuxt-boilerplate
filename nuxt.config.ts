@@ -6,7 +6,6 @@ export default defineNuxtConfig({
   ssr: true,
   devServer: {
     port: Number(process.env.PORT),
-    host: '0.0.0.0',
     // https: {
     //   cert: './0.0.0.0.pem',
     //   key: './0.0.0.0-key.pem',
