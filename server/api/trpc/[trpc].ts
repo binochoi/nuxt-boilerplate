@@ -1,8 +1,8 @@
 import { createNuxtApiHandler } from 'trpc-nuxt';
 import { router } from 'server/trpc';
-import * as endpoint from 'server/endpoints';
+import * as routers from 'server/routers';
 
-export const appRouter = router(endpoint);
+export const appRouter = router(routers);
 export type AppRouter = typeof appRouter;
 export default createNuxtApiHandler({
   router: appRouter,

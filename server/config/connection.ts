@@ -8,7 +8,7 @@ const {
 } = process.env;
 export default {
   host: 'cloud.bino.blog',
-  database: 'wellnear',
+  database: 'test',
   password: 'qwhda8!21a',
   user: 'bino',
   port: 5432,
