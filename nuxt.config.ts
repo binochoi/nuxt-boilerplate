@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-07-31',
   ssr: true,
   devServer: {
-    port: Number(process.env.PORT),
+    port: Number(process.env.PORT || 5000),
     // https: {
     //   cert: './0.0.0.0.pem',
     //   key: './0.0.0.0-key.pem',
