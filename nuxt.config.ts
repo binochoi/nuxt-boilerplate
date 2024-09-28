@@ -61,7 +61,7 @@ export default defineNuxtConfig({
   },
   imports: {
     dirs: [
-      // './global/constants',
+      './types',
       './layers',
       './hooks',
       './utils',
