@@ -1,0 +1,6 @@
+name = "my-nuxt-app"
+compatibility_date = "2024-10-22"
+compatibility_flags = ["nodejs_compat_v2"]
+
+main = "./dist/worker/index.js"
+assets = { directory = "./dist/public", binding = "ASSETS" }

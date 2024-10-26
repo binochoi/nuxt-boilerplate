@@ -1,0 +1,43 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "run-s build.*",
+    "build.execute": "nuxt build",
+    "build.worker-nitro-hack": "echo \"export default class {}\" >> ./dist/worker/index.js",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "wrangler dev",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@iconify/vue": "^4.1.2",
+    "@nuxtjs/tailwindcss": "^6.12.1",
+    "@pinia/nuxt": "^0.5.2",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@trpc/client": "^10.45.2",
+    "@trpc/server": "^10.45.2",
+    "@vueuse/nuxt": "^10.11.0",
+    "drizzle-kit": "^0.23.1",
+    "drizzle-orm": "^0.32.1",
+    "drizzle-valibot": "^0.2.0",
+    "nitro-cloudflare-dev": "^0.2.1",
+    "npm-run-all": "^4.1.5",
+    "nuxt": "^3.13.2",
+    "postgres": "^3.4.5",
+    "tailwindcss": "^3.4.7",
+    "tailwindcss-animate": "^1.0.7",
+    "trpc-nuxt": "^0.10.22",
+    "valibot": "0.42.1",
+    "vue": "^3.5.12",
+    "wrangler": "^3.78.7"
+  },
+  "devDependencies": {
+    "@binochoi/eslint-config-typescript": "^0.0.25",
+    "@binochoi/eslint-config-vue3": "^0.0.14",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.52.0"
+  },
+  "packageManager": "pnpm@9.6.0"
+}
