@@ -1,10 +1,10 @@
 # Nuxt 3 Minimal Starter
 develop speedy for MVP with nuxt
 
-## Features
-- Fullstack
-
-
-## Tools
+## Environment
+- Nuxt 3
+- cloudflare Workers
+- postgres TCP connection
 - trpc
 - drizzle-orm
+- valibot
