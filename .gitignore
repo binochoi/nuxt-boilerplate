@@ -6,6 +6,7 @@
 .cache
 .wrangler
 dist
+*.pem
 
 # Node dependencies
 node_modules
