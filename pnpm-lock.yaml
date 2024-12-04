@@ -13,10 +13,10 @@ importers:
         version: 4.1.2(vue@3.5.12(typescript@5.5.4))
       '@nuxtjs/tailwindcss':
         specifier: ^6.12.1
-        version: 6.12.1(magicast@0.3.5)(rollup@4.19.1)
+        version: 6.12.1(magicast@0.3.5)(rollup@4.19.1)(webpack-sources@3.2.3)
       '@pinia/nuxt':
-        specifier: ^0.5.2
-        version: 0.5.2(magicast@0.3.5)(rollup@4.19.1)(typescript@5.5.4)(vue@3.5.12(typescript@5.5.4))
+        specifier: ^0.9.0
+        version: 0.9.0(magicast@0.3.5)(pinia@2.2.0(typescript@5.5.4)(vue@3.5.12(typescript@5.5.4)))(rollup@4.19.1)(webpack-sources@3.2.3)
       '@tailwindcss/container-queries':
         specifier: ^0.1.1
         version: 0.1.1(tailwindcss@3.4.7)
@@ -28,7 +28,7 @@ importers:
         version: 10.45.2
       '@vueuse/nuxt':
         specifier: ^10.11.0
-        version: 10.11.0(magicast@0.3.5)(nuxt@3.13.2(@parcel/watcher@2.4.1)(@types/node@22.0.0)(drizzle-orm@0.32.1(@types/pg@8.11.6)(pg@8.12.0)(postgres@3.4.5))(eslint@8.57.0)(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.19.1)(terser@5.31.3)(typescript@5.5.4)(vite@5.4.10(@types/node@22.0.0)(terser@5.31.3))(webpack-sources@3.2.3))(rollup@4.19.1)(vue@3.5.12(typescript@5.5.4))
+        version: 10.11.0(magicast@0.3.5)(nuxt@3.13.2(@parcel/watcher@2.4.1)(@types/node@22.0.0)(drizzle-orm@0.32.1(@types/pg@8.11.6)(pg@8.12.0)(postgres@3.4.5))(eslint@8.57.0)(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.19.1)(terser@5.31.3)(typescript@5.5.4)(vite@5.4.10(@types/node@22.0.0)(terser@5.31.3))(webpack-sources@3.2.3))(rollup@4.19.1)(vue@3.5.12(typescript@5.5.4))(webpack-sources@3.2.3)
       drizzle-kit:
         specifier: ^0.23.1
         version: 0.23.1
@@ -332,9 +332,11 @@ packages:
 
   '@esbuild-kit/core-utils@3.3.2':
     resolution: {integrity: sha512-sPRAnw9CdSsRmEtnsl2WXWdyquogVpB3yZ3dgwJfe8zrOzTsV7cJvmwrKVa+0ma5BoiGJ+BoqkMvawbayKUsqQ==}
+    deprecated: 'Merged into tsx: https://tsx.is'
 
   '@esbuild-kit/esm-loader@2.6.5':
     resolution: {integrity: sha512-FxEMIkJKnodyA1OaCUoEvbYRkoZlLZ4d/eXFu9Fh8CbBBgP5EmZxrfTRyN0qpXZ4vOvqnE5YdRdcrmUUXuU+dA==}
+    deprecated: 'Merged into tsx: https://tsx.is'
 
   '@esbuild-plugins/node-globals-polyfill@0.2.3':
     resolution: {integrity: sha512-r3MIryXDeXDOZh7ih1l/yE9ZLORCd5e8vWg02azWRGj5SPTuoh69A2AIyn0Z31V/kHBfZ4HgWJ+OK3GTTwLmnw==}
@@ -1245,6 +1247,7 @@ packages:
   '@koa/router@12.0.1':
     resolution: {integrity: sha512-ribfPYfHb+Uw3b27Eiw6NPqjhIhTpVFzEWLwyc/1Xp+DCdwRRyIlAUODX+9bPARF6aQtUu1+/PHzdNvRzcs/+Q==}
     engines: {node: '>= 12'}
+    deprecated: Use v12.0.2 or higher to fix the vulnerability issue
 
   '@kwsites/file-exists@1.1.1':
     resolution: {integrity: sha512-m9/5YGR18lIwxSFDwfE3oA7bWuq9kdau6ugN4H2rJeyhFQZcG9AgSHkQtSD15a8WvTgfz9aikZMrKPHvbpqFiw==}
@@ -1409,8 +1412,10 @@ packages:
     resolution: {integrity: sha512-HNjmfLQEVRZmHRET336f20H/8kOozUGwk7yajvsonjNxbj2wBTK1WsQuHkD5yYh9RxFGL2EyDHryOihOwUoKDA==}
     engines: {node: '>= 10.0.0'}
 
-  '@pinia/nuxt@0.5.2':
-    resolution: {integrity: sha512-YvQqcv1LehSnH1OTC+9wU53UK+UxB45+vJXpc/RljJiSAfbEVGE+3NZ8WRsWC+YvL7A3FgtbmeuqhGka0lANJA==}
+  '@pinia/nuxt@0.9.0':
+    resolution: {integrity: sha512-2yeRo7LeyCF68AbNeL3xu2h6uw0617RkcsYxmA8DJM0R0PMdz5wQHnc44KeENQxR/Mrq8T910XVT6buosqsjBQ==}
+    peerDependencies:
+      pinia: ^2.3.0
 
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
@@ -1884,9 +1889,6 @@ packages:
 
   '@vue/compiler-ssr@3.5.12':
     resolution: {integrity: sha512-eLwc7v6bfGBSM7wZOGPmRavSWzNFF6+PdRhE+VFJhNCgHiF8AM7ccoqcv5kBXA2eWUfigD7byekvf/JsOfKvPA==}
-
-  '@vue/devtools-api@6.6.3':
-    resolution: {integrity: sha512-0MiMsFma/HqA6g3KLKn+AGpL1kgKhFWszC9U29NfpWK5LE7bjeXxySWJrOJ77hBz+TBrBQ7o4QJqbPbqbs8rJw==}
 
   '@vue/devtools-api@6.6.4':
     resolution: {integrity: sha512-sGhTPMuXqZ1rVOk32RylztWkfXTRhuS7vgAKv0zjqk8gbsHkJ7xfFf+jbySxt7tWObEJwyKaHMikV/WGDiQm8g==}
@@ -2912,6 +2914,7 @@ packages:
   eslint@8.57.0:
     resolution: {integrity: sha512-dZ6+mexnaTIbSBZWgou51U6OmzIhYM2VcNdtiTtI7qPNZm35Akpr0f6vtw3w1Kmn5PYo+tZVfh13WrhpS6oLqQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
 
   espree@9.6.1:
@@ -6407,9 +6410,9 @@ snapshots:
       - vue
       - webpack-sources
 
-  '@nuxt/kit@3.12.4(magicast@0.3.5)(rollup@4.19.1)':
+  '@nuxt/kit@3.12.4(magicast@0.3.5)(rollup@4.19.1)(webpack-sources@3.2.3)':
     dependencies:
-      '@nuxt/schema': 3.12.4(rollup@4.19.1)
+      '@nuxt/schema': 3.12.4(rollup@4.19.1)(webpack-sources@3.2.3)
       c12: 1.11.1(magicast@0.3.5)
       consola: 3.2.3
       defu: 6.1.4
@@ -6433,6 +6436,7 @@ snapshots:
       - magicast
       - rollup
       - supports-color
+      - webpack-sources
 
   '@nuxt/kit@3.13.2(magicast@0.3.5)(rollup@4.19.1)(webpack-sources@3.2.3)':
     dependencies:
@@ -6462,23 +6466,24 @@ snapshots:
       - supports-color
       - webpack-sources
 
-  '@nuxt/schema@3.12.4(rollup@4.19.1)':
+  '@nuxt/schema@3.12.4(rollup@4.19.1)(webpack-sources@3.2.3)':
     dependencies:
       compatx: 0.1.8
       consola: 3.2.3
       defu: 6.1.4
       hookable: 5.5.3
       pathe: 1.1.2
-      pkg-types: 1.1.3
+      pkg-types: 1.2.1
       scule: 1.3.0
       std-env: 3.7.0
       ufo: 1.5.4
       uncrypto: 0.1.3
-      unimport: 3.9.1(rollup@4.19.1)
+      unimport: 3.13.1(rollup@4.19.1)(webpack-sources@3.2.3)
       untyped: 1.4.2
     transitivePeerDependencies:
       - rollup
       - supports-color
+      - webpack-sources
 
   '@nuxt/schema@3.13.2(rollup@4.19.1)(webpack-sources@3.2.3)':
     dependencies:
@@ -6585,9 +6590,9 @@ snapshots:
       - vue-tsc
       - webpack-sources
 
-  '@nuxtjs/tailwindcss@6.12.1(magicast@0.3.5)(rollup@4.19.1)':
+  '@nuxtjs/tailwindcss@6.12.1(magicast@0.3.5)(rollup@4.19.1)(webpack-sources@3.2.3)':
     dependencies:
-      '@nuxt/kit': 3.12.4(magicast@0.3.5)(rollup@4.19.1)
+      '@nuxt/kit': 3.12.4(magicast@0.3.5)(rollup@4.19.1)(webpack-sources@3.2.3)
       autoprefixer: 10.4.19(postcss@8.4.40)
       consola: 3.2.3
       defu: 6.1.4
@@ -6605,6 +6610,7 @@ snapshots:
       - supports-color
       - ts-node
       - uWebSockets.js
+      - webpack-sources
 
   '@parcel/watcher-android-arm64@2.4.1':
     optional: true
@@ -6667,17 +6673,15 @@ snapshots:
       '@parcel/watcher-win32-ia32': 2.4.1
       '@parcel/watcher-win32-x64': 2.4.1
 
-  '@pinia/nuxt@0.5.2(magicast@0.3.5)(rollup@4.19.1)(typescript@5.5.4)(vue@3.5.12(typescript@5.5.4))':
+  '@pinia/nuxt@0.9.0(magicast@0.3.5)(pinia@2.2.0(typescript@5.5.4)(vue@3.5.12(typescript@5.5.4)))(rollup@4.19.1)(webpack-sources@3.2.3)':
     dependencies:
-      '@nuxt/kit': 3.12.4(magicast@0.3.5)(rollup@4.19.1)
+      '@nuxt/kit': 3.13.2(magicast@0.3.5)(rollup@4.19.1)(webpack-sources@3.2.3)
       pinia: 2.2.0(typescript@5.5.4)(vue@3.5.12(typescript@5.5.4))
     transitivePeerDependencies:
-      - '@vue/composition-api'
       - magicast
       - rollup
       - supports-color
-      - typescript
-      - vue
+      - webpack-sources
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
@@ -7182,8 +7186,6 @@ snapshots:
       '@vue/compiler-dom': 3.5.12
       '@vue/shared': 3.5.12
 
-  '@vue/devtools-api@6.6.3': {}
-
   '@vue/devtools-api@6.6.4': {}
 
   '@vue/devtools-core@7.4.4(vite@5.4.10(@types/node@22.0.0)(terser@5.31.3))(vue@3.5.12(typescript@5.5.4))':
@@ -7250,9 +7252,9 @@ snapshots:
 
   '@vueuse/metadata@10.11.0': {}
 
-  '@vueuse/nuxt@10.11.0(magicast@0.3.5)(nuxt@3.13.2(@parcel/watcher@2.4.1)(@types/node@22.0.0)(drizzle-orm@0.32.1(@types/pg@8.11.6)(pg@8.12.0)(postgres@3.4.5))(eslint@8.57.0)(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.19.1)(terser@5.31.3)(typescript@5.5.4)(vite@5.4.10(@types/node@22.0.0)(terser@5.31.3))(webpack-sources@3.2.3))(rollup@4.19.1)(vue@3.5.12(typescript@5.5.4))':
+  '@vueuse/nuxt@10.11.0(magicast@0.3.5)(nuxt@3.13.2(@parcel/watcher@2.4.1)(@types/node@22.0.0)(drizzle-orm@0.32.1(@types/pg@8.11.6)(pg@8.12.0)(postgres@3.4.5))(eslint@8.57.0)(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.19.1)(terser@5.31.3)(typescript@5.5.4)(vite@5.4.10(@types/node@22.0.0)(terser@5.31.3))(webpack-sources@3.2.3))(rollup@4.19.1)(vue@3.5.12(typescript@5.5.4))(webpack-sources@3.2.3)':
     dependencies:
-      '@nuxt/kit': 3.12.4(magicast@0.3.5)(rollup@4.19.1)
+      '@nuxt/kit': 3.12.4(magicast@0.3.5)(rollup@4.19.1)(webpack-sources@3.2.3)
       '@vueuse/core': 10.11.0(vue@3.5.12(typescript@5.5.4))
       '@vueuse/metadata': 10.11.0
       local-pkg: 0.5.0
@@ -7264,6 +7266,7 @@ snapshots:
       - rollup
       - supports-color
       - vue
+      - webpack-sources
 
   '@vueuse/shared@10.11.0(vue@3.5.12(typescript@5.5.4))':
     dependencies:
@@ -7537,11 +7540,11 @@ snapshots:
       dotenv: 16.4.5
       giget: 1.2.3
       jiti: 1.21.6
-      mlly: 1.7.1
+      mlly: 1.7.2
       ohash: 1.1.3
       pathe: 1.1.2
       perfect-debounce: 1.0.0
-      pkg-types: 1.1.3
+      pkg-types: 1.2.1
       rc9: 2.1.2
     optionalDependencies:
       magicast: 0.3.5
@@ -8673,7 +8676,7 @@ snapshots:
       array-union: 2.1.0
       dir-glob: 3.0.1
       fast-glob: 3.3.2
-      ignore: 5.3.1
+      ignore: 5.3.2
       merge2: 1.4.1
       slash: 3.0.0
 
@@ -8681,7 +8684,7 @@ snapshots:
     dependencies:
       '@sindresorhus/merge-streams': 2.3.0
       fast-glob: 3.3.2
-      ignore: 5.3.1
+      ignore: 5.3.2
       path-type: 5.0.0
       slash: 5.1.0
       unicorn-magic: 0.1.0
@@ -9279,7 +9282,7 @@ snapshots:
     dependencies:
       acorn: 8.12.1
       pathe: 1.1.2
-      pkg-types: 1.1.3
+      pkg-types: 1.2.1
       ufo: 1.5.4
 
   mlly@1.7.2:
@@ -9607,7 +9610,7 @@ snapshots:
       consola: 3.2.3
       execa: 8.0.1
       pathe: 1.1.2
-      pkg-types: 1.1.3
+      pkg-types: 1.2.1
       ufo: 1.5.4
 
   object-assign@4.1.1: {}
@@ -9854,7 +9857,7 @@ snapshots:
 
   pinia@2.2.0(typescript@5.5.4)(vue@3.5.12(typescript@5.5.4)):
     dependencies:
-      '@vue/devtools-api': 6.6.3
+      '@vue/devtools-api': 6.6.4
       vue: 3.5.12(typescript@5.5.4)
       vue-demi: 0.14.10(vue@3.5.12(typescript@5.5.4))
     optionalDependencies:
@@ -9865,7 +9868,7 @@ snapshots:
   pkg-types@1.1.3:
     dependencies:
       confbox: 0.1.7
-      mlly: 1.7.1
+      mlly: 1.7.2
       pathe: 1.1.2
 
   pkg-types@1.2.1:
@@ -10886,9 +10889,9 @@ snapshots:
       fast-glob: 3.3.2
       local-pkg: 0.5.0
       magic-string: 0.30.11
-      mlly: 1.7.1
+      mlly: 1.7.2
       pathe: 1.1.2
-      pkg-types: 1.1.3
+      pkg-types: 1.2.1
       scule: 1.3.0
       strip-literal: 2.1.0
       unplugin: 1.12.0
