@@ -21,7 +21,7 @@
     "@trpc/client": "^10.45.2",
     "@trpc/server": "^10.45.2",
     "@vueuse/nuxt": "^10.11.0",
-    "drizzle-kit": "^0.23.1",
+    "drizzle-kit": "^0.30.0",
     "drizzle-orm": "^0.32.1",
     "drizzle-valibot": "^0.2.0",
     "env-cmd": "^10.1.0",
