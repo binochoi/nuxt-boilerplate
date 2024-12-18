@@ -1,5 +1,8 @@
 <template>
-  <div class="screen" spellcheck="false">
+  <div
+    class="screen"
+    spellcheck="false"
+  >
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
