@@ -1,1 +1,1 @@
-export { default as app } from './app.router'
+export { default as app } from './app.router';

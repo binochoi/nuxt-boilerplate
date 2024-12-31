@@ -1,26 +1,15 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { betterAuth } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
+import { RuntimeConfig } from 'nuxt/schema';
 import { db, schema } from '../drizzle/drizzle';
 
-type Injections = {
-  env?: { [K: string]: string | undefined },
-}
-
-export const BetterAuth = ({ env = process.env }: Injections) => betterAuth({
+export const BetterAuth = (env: RuntimeConfig) => betterAuth({
   baseURL: env.BASE_URL!,
-  trustedOrigins: [env.TRUSTED_ORIGINS!],
-  secret: 'ajsduwqgfqidjw',
+  trustedOrigins: [env.BASE_URL!],
+  secret: env.BETTER_AUTH_SECRET!,
   user: {
     additionalFields: {
-      // role: {
-      //   fieldName: 'role',
-      //   type: 'number',
-      //   enum: ['NEWBIE', 'VERIFIED'],
-      //   defaultValue: 'NEWBIE',
-      //   required: true,
-      //   input: false, // don't allow user to set role
-      // },
     },
   },
   database: drizzleAdapter(db(env.DB_CONNECTION_STRING!), {
@@ -43,8 +32,5 @@ export const BetterAuth = ({ env = process.env }: Injections) => betterAuth({
   },
   logger: {
     level: 'info',
-  }
+  },
 });
-
-const auth = BetterAuth({});
-export { auth };

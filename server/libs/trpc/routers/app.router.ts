@@ -1,4 +1,5 @@
-import { procedure, router } from '../trpc'
+import { procedure, router } from '../trpc';
+
 export default router({
-    getList: procedure.query(() => [])
-})
+  getList: procedure.query(() => []),
+});

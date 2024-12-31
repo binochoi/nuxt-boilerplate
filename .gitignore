@@ -5,6 +5,7 @@
 .nuxt
 .nitro
 .cache
+.dev.vars
 dist
 
 # Node dependencies
