@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     autoImport: true,
   },
   devServer: {
-    port: Number(process.env.PORT) || 5819,
+    port: Number(process.env.PORT) || 5821,
     https: {
       cert: './localhost.pem',
       key: './localhost-key.pem',
