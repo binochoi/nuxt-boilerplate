@@ -32,6 +32,9 @@ export default defineNuxtConfig({
     },
     '~/components',
   ],
+  extends: [
+    './app/layers/logo',
+  ],
   modules: [
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
