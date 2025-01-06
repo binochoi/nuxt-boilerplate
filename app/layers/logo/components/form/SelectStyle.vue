@@ -27,10 +27,3 @@ const style = defineModel<LogoPrompt['style']>({ required: true });
     </div>
   </div>
 </template>
-<style lang="scss" scoped>
-.button {
-  &:before {
-
-  }
-}
-</style>

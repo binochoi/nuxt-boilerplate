@@ -33,13 +33,17 @@ const getTooltipColor = (color: Color) => {
 </script>
 
 <template>
-  <div class="py-4 overflow-x-auto">
+  <div class="py-4 overflow-visible bg-gradient-to-b from-slate-50/50 to-white/50">
     <div class="palette gap-4 px-4">
       <div
         v-for="colorName in colors"
         :key="colorName"
-        class="w-12 h-12 inline-flex justify-center items-center"
+        class="w-12 h-12 inline-flex justify-center items-center relative"
       >
+        <div
+          class="absolute inset-0 blur-md opacity-20 scale-75 transition-opacity duration-300"
+          :style="{ background: colorGradients[colorName] }"
+        ></div>
         <ATooltip
           :title="colorName"
           :color="getTooltipColor(colorName)"
