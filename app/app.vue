@@ -32,4 +32,33 @@ body {
   -moz-text-size-adjust: none;
   text-size-adjust: none;
 }
+* {
+  @apply outline-none;
+}
+
+body {
+  --sb-track-color: #f2f6f8;
+  --sb-thumb-color: #d8d8d8;
+  --sb-size: 5px;
+}
+*::-webkit-scrollbar {
+  width: var(--sb-size);
+  height: var(--sb-size);
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 5px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
 </style>

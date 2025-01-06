@@ -40,7 +40,12 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@vueuse/nuxt',
     'nitro-cloudflare-dev',
+    '@ant-design-vue/nuxt',
   ],
+  antd: {
+    components: ['Textarea'],
+  },
+
   pinia: {
     storesDirs: ['./app/stores/**'],
   },
