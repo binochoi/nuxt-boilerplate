@@ -1,5 +1,19 @@
 export type LogoPrompt = {
-  style: 'pixel art' | 'vector' | 'flat' | 'textured' | 'solid' | 'sketch' | 'vintage' | 'metalic' | 'gradient';
-  color: 'random' | 'white' | 'red' | 'blue' | 'green' | 'teal' | 'yellow' | 'purple' | 'pink' | 'orange' | 'brown' | 'gray' | 'black';
-  prompt: string,
+  style:
+  'emblem' |
+  'minimalistic' |
+  'neon' |
+  'pixel art' |
+  'vector' |
+  'textured' |
+  'solid' |
+  'sketch' |
+  'vintage' |
+  'metalic' |
+  'gradient';
+  color?: 'white' | 'red' | 'blue' | 'green' | 'teal' | 'yellow' | 'purple' | 'pink' | 'orange' | 'brown' | 'gray' | 'black' | 'navy';
+  description: string,
+  slogan?: string,
 }
+
+export type LogoFn = (params: Pick<LogoPrompt, 'color' | 'description' | 'slogan'>) => string;

@@ -1,5 +1,6 @@
 <template>
-  <div>
-    <TheWelcome />
+  <div class="max-w-6xl m-auto">
+    <MainHeader />
+    <NuxtPage />
   </div>
 </template>

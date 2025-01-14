@@ -1,11 +1,16 @@
 import { LogoPrompt } from '~~/server/types/logo';
 
 export default () => {
-  const styles: LogoPrompt['style'][] = ['flat', 'vector', 'pixel art', 'textured', 'solid', 'sketch', 'vintage', 'metalic', 'gradient'];
-  const form = reactive<LogoPrompt>({
-    style: 'flat',
-    color: 'random',
-    prompt: '',
+  const styles: LogoPrompt['style'][] = ['emblem', 'minimalistic', 'neon'];
+  type Form = Omit<LogoPrompt, 'color' | 'style'> & {
+    style?: LogoPrompt['style']
+    color: LogoColor
+  };
+  const form = reactive<Form>({
+    style: undefined,
+    color: undefined,
+    description: '',
+    slogan: undefined,
   });
 
   return {

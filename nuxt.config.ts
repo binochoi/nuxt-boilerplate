@@ -1,4 +1,6 @@
 import { fileURLToPath } from 'url';
+import Aura from '@primevue/themes/aura';
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   imports: {
@@ -41,7 +43,22 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nitro-cloudflare-dev',
     '@ant-design-vue/nuxt',
+    '@primevue/nuxt-module',
   ],
+  primevue: {
+    components: {
+      prefix: 'Prime',
+    },
+    options: {
+      ripple: true,
+      theme: {
+        preset: Aura,
+        options: {
+          darkModeSelector: '.darkmode',
+        },
+      },
+    },
+  },
   antd: {
     components: ['Textarea'],
   },
@@ -58,7 +75,7 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-11-01',
   build: {
-    transpile: ['trpc-nuxt', 'primevue'],
+    transpile: ['trpc-nuxt'],
   },
   app: {
     head: {

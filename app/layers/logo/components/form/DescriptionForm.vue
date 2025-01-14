@@ -1,14 +1,29 @@
 <script setup lang="ts">
 
-const prompt = defineModel<string>({ required: true });
+const description = defineModel<string>({ required: true });
 const isAiGenerating = ref(false);
+const { logo } = useTrpcClient();
+const suggestLogoShape = async () => {
+  isAiGenerating.value = true;
+  try {
+    const sentence = await logo.suggestLogoShape.query();
+    if (!sentence) {
+      return;
+    }
+    description.value = sentence;
+  } catch {
+    /** */
+  } finally {
+    isAiGenerating.value = false;
+  }
+};
 </script>
 
 <template>
   <AInput
-    v-model="prompt"
+    v-model:value="description"
     size="large"
-    placeholder="로고의 모양을 설명해주세요"
+    placeholder="Describe a shape of logo"
   >
     <template #suffix>
       <a-tooltip :title="isAiGenerating ? 'generating...' : 'ai random generate'">
@@ -23,7 +38,7 @@ const isAiGenerating = ref(false);
             isAiGenerating && 'blur-[1.5px] animate-spin',
             isAiGenerating ? 'text-blue-500' : 'text-slate-500',
           ]"
-          @click="isAiGenerating = true"
+          @click="suggestLogoShape"
         />
         <!-- <info-circle-outlined style="color: rgba(0, 0, 0, 0.45)" /> -->
       </a-tooltip>

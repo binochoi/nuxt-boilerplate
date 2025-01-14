@@ -1,10 +1,13 @@
-import OpenAI from '../providers/OpenAI';
-import prompt from '../prompts/colorful';
+import Dalle from '../providers/Dalle';
+import prompt from '../prompts/neon_realistic';
 
 export default defineEventHandler(async (event) => {
-  const openai = OpenAI.inject({ event });
-  const { image } = await openai.prompt({
-    prompt: prompt(),
+  const dallE = Dalle.inject({ event });
+  const { image } = await dallE.prompt({
+    prompt: prompt({
+      color: 'navy',
+      description: 'shield',
+    }),
   });
   if (!image) {
     throw createError('z');

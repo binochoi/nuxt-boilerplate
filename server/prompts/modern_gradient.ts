@@ -1,8 +1,8 @@
 import { LogoFn } from '../types/logo';
 
 const emblem: LogoFn = ({ color, description, slogan }) => `
-An emblem for a shield with ${description},
-vector, simple, ${color}.
+${color} colored ${description} iconic gradient filled modern 2D logo,
+solid dark background,
 ${slogan ? `featuring the text ${slogan}` : ''}
 `;
 
