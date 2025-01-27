@@ -9,7 +9,7 @@
   </div>
 </template>
 <style lang="scss">
-body {
+#app {
   @apply select-none;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
