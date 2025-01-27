@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     autoImport: true,
   },
   devServer: {
-    port: Number(process.env.PORT) || 5821,
+    port: Number(process.env.PORT) || 5121,
     https: {
       cert: './localhost.pem',
       key: './localhost-key.pem',
@@ -56,6 +56,9 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no',
+    },
+    rootAttrs: {
+      id: 'app',
     },
   },
   future: { compatibilityVersion: 4 },
