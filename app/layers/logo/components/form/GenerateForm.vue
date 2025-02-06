@@ -3,7 +3,7 @@ import SelectStyle from './SelectStyle.vue';
 import DescriptionForm from './DescriptionForm.vue';
 import ColorPicker from './ColorPicker.vue';
 
-const { form } = useLogoGenerateForm();
+const { form, canSubmit } = useLogoGenerateForm();
 const isWithSlogan = ref(false);
 const loading = ref(false);
 const { logo } = useTrpcClient();
@@ -29,6 +29,7 @@ const submit = async () => {
 
 <template>
   <div class="max-w-xl m-auto mt-20 flex flex-col gap-4">
+    {{ form }}
     <SelectStyle v-model="form.style" />
     <ColorPicker v-model="form.color" />
     <div class="px-4">
@@ -57,6 +58,7 @@ const submit = async () => {
       :loading
       size="large"
       class="max-w-36 m-auto"
+      :disabled="canSubmit !== true"
       @click="submit"
     >
       로고 생성하기

@@ -1,7 +1,5 @@
 <script setup lang="ts">
-const modelValue = defineModel<LogoColor>({
-  default: 'random' satisfies LogoColor,
-});
+const modelValue = defineModel<LogoColor>({ required: true });
 const {
   colors, colorGradients, getTooltipColor,
 } = useLogoColorPicker();

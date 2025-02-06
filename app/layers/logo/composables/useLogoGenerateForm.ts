@@ -8,13 +8,26 @@ export default () => {
   };
   const form = reactive<Form>({
     style: undefined,
-    color: undefined,
+    color: 'random',
     description: '',
     slogan: undefined,
   });
-
+  const canSubmit = computed(() => {
+    const {
+      style,
+      description,
+    } = form;
+    if (!style) {
+      return 'style_required';
+    }
+    if (description === '') {
+      return 'description_required';
+    }
+    return true;
+  });
   return {
     styles,
     form,
+    canSubmit,
   };
 };
