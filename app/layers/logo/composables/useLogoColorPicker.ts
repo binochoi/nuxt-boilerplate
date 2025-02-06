@@ -22,6 +22,8 @@ export default () => {
     switch (color) {
     case 'white':
       return;
+    case 'random':
+      return;
     default:
       return color;
     }
