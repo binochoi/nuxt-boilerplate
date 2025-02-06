@@ -21,6 +21,7 @@ const isSelected = (color: LogoColor) => modelValue.value === color;
           :color="getTooltipColor(colorName)"
           placement="top"
           class="cursor-pointer"
+          :arrow="false"
           @click="modelValue = colorName"
         >
           <div>
