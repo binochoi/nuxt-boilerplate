@@ -28,7 +28,6 @@ const submit = async () => {
 
 <template>
   <div class="max-w-xl m-auto mt-20 flex flex-col gap-4">
-    {{ form }}
     <SelectStyle v-model="form.style" />
     <ColorPicker v-model="form.color" />
     <div class="px-4">
