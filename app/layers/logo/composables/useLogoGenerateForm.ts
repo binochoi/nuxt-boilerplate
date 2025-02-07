@@ -1,7 +1,11 @@
 import { LogoPrompt } from '~~/server/types/logo';
 
 export default () => {
-  const styles: LogoPrompt['style'][] = ['emblem', 'minimalistic', 'neon'];
+  const styles: LogoPrompt['style'][] = [
+    'emblem', 'minimalistic', 'neon', 'mascot', 'abstract',
+    'gradient', 'crystal', 'outline',
+    // 'pixelart', 'sketch',
+  ];
   type Form = Omit<LogoPrompt, 'color' | 'style'> & {
     style?: LogoPrompt['style']
     color: LogoColor
@@ -10,7 +14,6 @@ export default () => {
     style: undefined,
     color: 'random',
     description: '',
-    slogan: undefined,
   });
   const canSubmit = computed(() => {
     const {

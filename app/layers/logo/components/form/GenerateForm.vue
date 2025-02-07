@@ -4,7 +4,6 @@ import DescriptionForm from './DescriptionForm.vue';
 import ColorPicker from './ColorPicker.vue';
 
 const { form, canSubmit } = useLogoGenerateForm();
-const isWithSlogan = ref(false);
 const loading = ref(false);
 const { logo } = useTrpcClient();
 const submit = async () => {
@@ -33,24 +32,7 @@ const submit = async () => {
     <SelectStyle v-model="form.style" />
     <ColorPicker v-model="form.color" />
     <div class="px-4">
-      <div class="flex items-center gap-2 my-4">
-        <PrimeCheckBox
-          v-model="isWithSlogan"
-          inputId="generate-only-icon"
-          binary
-        />
-        <label for="generate-only-icon">
-          generate with slogan
-        </label>
-      </div>
-
       <div class="flex flex-col gap-2">
-        <AInput
-          v-if="isWithSlogan"
-          v-model:value="form.slogan"
-          size="large"
-          placeholder="slogan"
-        />
         <DescriptionForm v-model="form.description" />
       </div>
     </div>

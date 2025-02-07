@@ -3,6 +3,7 @@ export type LogoPrompt = {
   'emblem' |
   'minimalistic' |
   'neon' |
+  'mascot' |
   'pixel art' |
   'vector' |
   'textured' |
@@ -10,10 +11,14 @@ export type LogoPrompt = {
   'sketch' |
   'vintage' |
   'metalic' |
-  'gradient';
-  color?: 'white' | 'red' | 'blue' | 'green' | 'teal' | 'yellow' | 'purple' | 'pink' | 'orange' | 'brown' | 'gray' | 'black' | 'navy';
+  'gradient' |
+  'abstract' |
+  'outline' |
+  'pixelart' |
+  'sketch' |
+  'crystal';
+  color: 'white' | 'red' | 'blue' | 'green' | 'teal' | 'yellow' | 'purple' | 'pink' | 'orange' | 'brown' | 'gray' | 'black' | 'navy';
   description: string,
-  slogan?: string,
 }
 
-export type LogoFn = (params: Pick<LogoPrompt, 'color' | 'description' | 'slogan'>) => string;
+export type LogoFn = (params: Pick<LogoPrompt, 'color' | 'description'>) => string;

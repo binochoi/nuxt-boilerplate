@@ -1,6 +1,9 @@
-import { LogoPrompt } from '../types/logo';
+import { LogoFn } from '../types/logo';
 
-export default ({ color, description }: Pick<LogoPrompt, 'color' | 'description'>) => `
-An emblem for a shield with ${description},
-vector, simple, ${color}.
+const pixelart: LogoFn = ({ color, description }) => `
+A simple logo of ${description},
+${color} colored,
+pixel art, flat, no realistic photo details
 `;
+
+export default pixelart;
