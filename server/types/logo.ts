@@ -16,7 +16,7 @@ export type LogoPrompt = {
   'outline' |
   'pixelart' |
   'sketch' |
-  'crystal';
+  'cubism';
   color: 'white' | 'red' | 'blue' | 'green' | 'teal' | 'yellow' | 'purple' | 'pink' | 'orange' | 'brown' | 'gray' | 'black' | 'navy';
   description: string,
 }

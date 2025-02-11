@@ -5,7 +5,7 @@ import neon from './neon_realistic';
 import mascot from './mascot';
 import abstract from './abstract';
 import gradient from './modern_gradient';
-import crystal from './crystalCubism';
+import cubism from './cubism';
 import outline from './outline';
 import pixelart from './pixelart';
 import sketch from './sketch';
@@ -19,7 +19,7 @@ export const logoStyles = {
   mascot,
   abstract,
   gradient,
-  crystal,
+  cubism,
   outline,
   pixelart,
   sketch,

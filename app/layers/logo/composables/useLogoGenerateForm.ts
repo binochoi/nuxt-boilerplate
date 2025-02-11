@@ -2,9 +2,8 @@ import { LogoPrompt } from '~~/server/types/logo';
 
 export default () => {
   const styles: LogoPrompt['style'][] = [
-    'outline', 'minimalistic', 'gradient', 'abstract', 'crystal',
-    'neon', 'emblem', 'mascot',
-    // 'pixelart', 'sketch',
+    'minimalistic', 'gradient', 'abstract', 'cubism',
+    'neon', 'emblem', 'mascot', 'sketch',
   ];
   type Form = Omit<LogoPrompt, 'color' | 'style'> & {
     style?: LogoPrompt['style']

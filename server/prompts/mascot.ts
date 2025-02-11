@@ -4,6 +4,5 @@ export default ({ color, description }: Pick<LogoPrompt, 'color' | 'description'
 A mascot logo of ${description}, simple, vector
 no shading detail
 simple,
-${color ? `color: ${color}` : ''},
-no background
+using ${color ? `${color}` : 'black'} ink on a white background to maintain a clean and modern look
 `;

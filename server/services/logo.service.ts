@@ -8,11 +8,15 @@ export default defineService({
   gpt: GPT,
 }, ({ dalle, gpt }) => {
   const generate = async (prompt: LogoPrompt) => {
-    const response = await dalle.prompt({
-      prompt: logoStyles[prompt.style as keyof typeof logoStyles](prompt),
-      size: '1024x1024',
-    });
-    return { imageLink: response.image };
+    try {
+      const response = await dalle.prompt({
+        prompt: logoStyles[prompt.style as keyof typeof logoStyles](prompt),
+        size: '1024x1024',
+      });
+      return { imageLink: response.image };
+    } catch (e) {
+      console.error(e);
+    }
   };
   const suggestLogoShape = () => gpt.simplePrompt(`
     I'm imagining random shape.
