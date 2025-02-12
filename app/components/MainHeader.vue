@@ -5,29 +5,35 @@
         to="/"
         class="p-2 font-bold text-2xl"
       >
-        Lymgo
+        <div class="w-28 h-28">
+          <TheImage
+            :src="`${useRuntimeConfig().public.MEDIA_URL}/showcases/minimalistic.webp?ver=2`"
+          />
+        </div>
       </NuxtLink>
       <div class="flex items-center">
-        <PrimeMenubar
-          class="m-2"
-          :model="[
-            {
-              label: 'Pricing',
-              command() {
-                $router.push('/pricing');
+        <ClientOnly>
+          <PrimeMenubar
+            class="m-2"
+            :model="[
+              {
+                label: 'Pricing',
+                command() {
+                  $router.push('/pricing');
+                },
               },
-            },
-            {
-              label: 'Generate',
-              command() {
-                $router.push('/generate')
+              {
+                label: 'Generate',
+                command() {
+                  $router.push('/generate')
+                }
+              },
+              {
+                label: 'Sign Up'
               }
-            },
-            {
-              label: 'Sign Up'
-            }
-          ]"
-        />
+            ]"
+          />
+        </ClientOnly>
       </div>
     </div>
   </div>

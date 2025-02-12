@@ -16,6 +16,7 @@ export default defineService({
       return { imageLink: response.image };
     } catch (e) {
       console.error(e);
+      throw e;
     }
   };
   const suggestLogoShape = () => gpt.simplePrompt(`

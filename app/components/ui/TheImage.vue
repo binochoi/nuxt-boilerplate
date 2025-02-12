@@ -13,10 +13,13 @@ const state = defineModel<State>('state');
       v-model:state="state"
       :src="src || ''"
       class="w-full h-full flex justify-center items-center"
-      imgClass="object-cover w-full h-full hover:scale-110 transition-transform duration-300 animate-in ease-out fade-in fill-mode-backwards"
+      imgClass="object-cover w-full h-full hover:scale-110 transition-transform duration-500 animate-in ease-out fade-in fill-mode-backwards"
     >
       <template #loading>
-        <TheSpinner />
+        <TheSpinner
+          :size="15"
+          class="opacity-20"
+        />
       </template>
     </ImageBase>
   </ClientOnly>

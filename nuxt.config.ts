@@ -3,6 +3,16 @@ import Aura from '@primevue/themes/aura';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    BASE_URL: process.env.BASE_URL,
+    DB_CONNECTION_STRING: process.env.DB_CONNECTION_STRING,
+    BETTER_AUTH_SECRET: process.env.BETTER_AUTH_SECRET,
+    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+    GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+    public: {
+      MEDIA_URL: process.env.NODE_ENV === 'development' ? 'https://localhost:5821/__media__' : 'https://media.lymgo.com',
+    },
+  },
   imports: {
     dirs: [
       './types/*.d.ts',
@@ -18,13 +28,6 @@ export default defineNuxtConfig({
       cert: './localhost.pem',
       key: './localhost-key.pem',
     },
-  },
-  runtimeConfig: {
-    BASE_URL: process.env.BASE_URL,
-    DB_CONNECTION_STRING: process.env.DB_CONNECTION_STRING,
-    BETTER_AUTH_SECRET: process.env.BETTER_AUTH_SECRET,
-    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
-    GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
   },
   components: [
     {
@@ -92,6 +95,11 @@ export default defineNuxtConfig({
     rollupConfig: {
       external: ['cloudflare:sockets'],
     },
+    routeRules: {
+      '/__media__/**': {
+        proxy: 'https://media.lymgo.com/**',
+      },
+    },
   },
   typescript: {
     tsConfig: {
@@ -106,6 +114,20 @@ export default defineNuxtConfig({
       tailwindcss: {},
       autoprefixer: {},
     },
+  },
+  vite: {
+    plugins: [
+      {
+        name: 'configure-response-headers',
+        configureServer: (server) => {
+          server.middlewares.use((_req, res, next) => {
+            res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
+            res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
+            next();
+          });
+        },
+      },
+    ],
   },
 
   devtools: { enabled: false },

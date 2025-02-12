@@ -22,7 +22,10 @@ const state = defineModel<State>('state', {
 watch(_src, () => {
   const image = new Image();
   image.src = _src.value;
-  image.addEventListener('error', (e) => emit('error', e));
+  image.addEventListener('error', (e) => {
+    state.value = 'error';
+    emit('error', e);
+  });
   image.addEventListener('load', () => state.value = 'loaded');
 }, { immediate: true });
 const src = computed(() => {
@@ -54,7 +57,6 @@ const src = computed(() => {
       v-else-if="typeof errorSrc === 'undefined'"
       name="error"
     >
-      error
     </slot>
   </div>
 </template>
