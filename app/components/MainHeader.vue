@@ -7,7 +7,7 @@
       >
         <div class="w-28 h-28">
           <TheImage
-            :src="`${useRuntimeConfig().public.MEDIA_URL}/showcases/minimalistic.webp?ver=2`"
+            :src="`${useRuntimeConfig().public.MEDIA_URL}/logo.webp`"
           />
         </div>
       </NuxtLink>
