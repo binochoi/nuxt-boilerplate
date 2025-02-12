@@ -2,7 +2,7 @@ import { LogoPrompt } from '~~/server/types/logo';
 
 export default () => {
   const styles: LogoPrompt['style'][] = [
-    'minimalistic', 'gradient', 'abstract', 'cubism',
+    'minimalistic', 'gradient', 'cubism',
     'neon', 'emblem', 'mascot', 'sketch',
   ];
   type Form = Omit<LogoPrompt, 'color' | 'style'> & {
