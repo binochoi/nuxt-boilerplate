@@ -32,14 +32,22 @@ body {
   -moz-text-size-adjust: none;
   text-size-adjust: none;
 }
-* {
-  @apply outline-none;
+
+#app {
+  @apply h-full
+}
+.screen {
+  @apply h-full overflow-x-hidden overflow-y-auto;
 }
 
 body {
   --sb-track-color: #f2f6f8;
   --sb-thumb-color: #d8d8d8;
   --sb-size: 5px;
+}
+
+* {
+  @apply outline-none;
 }
 *::-webkit-scrollbar {
   width: var(--sb-size);

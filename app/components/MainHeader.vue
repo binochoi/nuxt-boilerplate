@@ -17,6 +17,7 @@
             class="m-2"
             :model="[
               {
+                style: 'font-bold',
                 label: 'Pricing',
                 command() {
                   $router.push('/pricing');
@@ -28,8 +29,12 @@
                   $router.push('/generate')
                 }
               },
+              // {
+              //   label: 'Showcase',
+              // },
               {
-                label: 'Sign Up'
+                label: 'Sign Up',
+                command: () => $router.push('/login')
               }
             ]"
           />

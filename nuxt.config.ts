@@ -39,6 +39,8 @@ export default defineNuxtConfig({
   ],
   extends: [
     './app/layers/logo',
+    './app/layers/auth',
+    './app/layers/pricing',
   ],
   modules: [
     '@nuxtjs/tailwindcss',
@@ -84,6 +86,9 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no',
+    },
+    rootAttrs: {
+      id: 'app',
     },
   },
   future: { compatibilityVersion: 4 },

@@ -19,10 +19,13 @@ const isSelected = (selected: Style) => style.value === selected;
           'button',
           'rounded-md bg-white aspect-square',
           'flex flex-col justify-center items-center',
+          'animate-in fade-in duration-500 ease-out fill-mode-backwards'
         ]"
         @click="style = style === styleName ? undefined : styleName"
       >
-        <div class="w-14 h-14 rounded-2xl bg-slate-300 overflow-hidden relative shadow-sm">
+        <div
+          class="w-14 h-14 rounded-2xl bg-slate-300 overflow-hidden relative shadow-sm"
+        >
           <TheImage :src="`${useRuntimeConfig().public.MEDIA_URL}/showcases/${styleName}.webp?ver=4`" />
           <div
             v-show="isSelected(styleName)"
