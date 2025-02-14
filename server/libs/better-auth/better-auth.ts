@@ -51,8 +51,9 @@ const useAuth = ({
   },
 });
 
-let auth: ReturnType<typeof useAuth>;
-export const Auth = () => auth ??= useAuth({
-  ...useRuntimeConfig(),
-  secret: useRuntimeConfig().authSecret,
-});
+export const Auth = Singleton(
+  () => useAuth({
+    ...useRuntimeConfig(),
+    secret: useRuntimeConfig().authSecret,
+  }),
+);
