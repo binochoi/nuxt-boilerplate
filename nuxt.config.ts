@@ -27,10 +27,10 @@ export default defineNuxtConfig({
   runtimeConfig,
   imports: {
     dirs: [
-      './app/types/*.d.ts',
-      './app/layers',
-      './app/hooks',
-      './app/utils',
+      './types/*.d.ts',
+      './layers',
+      './hooks',
+      './utils',
     ],
     autoImport: true,
   },
@@ -61,7 +61,15 @@ export default defineNuxtConfig({
     'nitro-cloudflare-dev',
     '@ant-design-vue/nuxt',
     '@primevue/nuxt-module',
+    '@nuxtjs/i18n',
   ],
+  i18n: {
+    locales: [
+      { code: 'en', language: 'en-US' },
+      { code: 'kr', language: 'kr-KR' },
+    ],
+    defaultLocale: 'en',
+  },
   primevue: {
     components: {
       prefix: 'Prime',
