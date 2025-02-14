@@ -24,6 +24,10 @@ const useAuth = ({
   secret,
   user: {
     additionalFields: {
+      credit: {
+        type: 'number',
+        defaultValue: 1,
+      },
     },
   },
   database: drizzleAdapter(db(), {
@@ -50,6 +54,6 @@ const useAuth = ({
 
 let auth: ReturnType<typeof useAuth>;
 export const Auth = () => auth ??= useAuth({
-  ...useConfig(process.env),
-  secret: useConfig(process.env).authSecret,
+  ...useConfig(process.env as any),
+  secret: useConfig(process.env as any).authSecret,
 });

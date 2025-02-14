@@ -1,13 +1,19 @@
-import type { InferUserFromClient, ClientOptions, InferSessionFromClient } from 'better-auth';
 import { createAuthClient } from 'better-auth/vue';
 import type { RouteLocationRaw } from 'vue-router';
+import { adminClient, inferAdditionalFields } from 'better-auth/client/plugins';
+import { Auth } from '~~/server/libs/better-auth/better-auth';
 
 export default () => {
   const headers = import.meta.server ? useRequestHeaders() : undefined;
-  const client = createAuthClient({ fetchOptions: { headers } });
-
-  type Session = InferSessionFromClient<ClientOptions> | null;
-  type User = InferUserFromClient<ClientOptions> | null;
+  const client = createAuthClient({
+    fetchOptions: { headers },
+    plugins: [
+      inferAdditionalFields<ReturnType<typeof Auth>>(),
+      adminClient(),
+    ],
+  });
+  type Session = typeof client.$Infer.Session['session'] | null;
+  type User = typeof client.$Infer.Session['user'] | null;
   const session = useState<Session>('auth:session', () => null);
   const user = useState<User>('auth:user', () => null);
   const isSessionFetching = import.meta.server ? ref(false) : useState('auth:sessionFetching', () => false);

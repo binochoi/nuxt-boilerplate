@@ -1,5 +1,41 @@
 <script setup lang="ts">
+const router = useRouter();
+const route = useRoute();
 const auth = useAuth();
+const isSelected = (path: string) => route.fullPath.includes(path);
+const selectedClass = 'font-bold';
+const menuList = computed(() => [
+  {
+    label: 'Pricing',
+    class: isSelected('/pricing') && selectedClass,
+    command() {
+      router.push('/pricing');
+    },
+  },
+  {
+    label: 'Generate',
+    class: isSelected('/generate') && selectedClass,
+    command() {
+      router.push('/generate');
+    },
+  },
+  auth.session.value ? {
+    label: 'Logout',
+    command: async () => {
+      await showConfirm('정말 로그아웃 하시겠어요?');
+      await auth.client.signOut({
+        fetchOptions: {
+          onSuccess: () => {
+            showAlert('로그아웃 되었습니다. 감사합니다.');
+          },
+        },
+      });
+    },
+  } : {
+    label: 'Sign Up',
+    command: () => router.push('/login'),
+  },
+]);
 </script>
 <template>
   <div class="max-w-6xl m-auto">
@@ -16,47 +52,14 @@ const auth = useAuth();
       </NuxtLink>
       <div class="flex items-center">
         <ClientOnly>
+          <CreditCountDisplay
+            v-if="auth.user.value"
+            :count="auth.user.value.credit"
+            @click="router.push('/pricing')"
+          />
           <PrimeMenubar
             class="m-2"
-            :model="[
-              {
-                style: 'font-bold',
-                label: 'Pricing',
-                command() {
-                  $router.push('/pricing');
-                },
-              },
-              {
-                label: 'Generate',
-                command() {
-                  $router.push('/generate')
-                }
-              },
-              // {
-              //   label: 'Showcase',
-              // },
-              auth.session.value ? {
-                label: 'Logout',
-                command: async () => {
-                  await showConfirm('정말 로그아웃 하시겠어요?');
-                  try {
-                    await auth.client.signOut({
-                      fetchOptions: {
-                        onSuccess: () => {
-                          showAlert('로그아웃 되었습니다. 감사합니다.');
-                        }
-                      }
-                    });
-                  } catch (err) {
-                    console.log('sival')
-                    console.log(err);
-                  }
-                },
-              } : {
-                label: 'Sign Up',
-                command: () => $router.push('/login')
-              }
-            ]"
+            :model="menuList"
           />
         </ClientOnly>
       </div>

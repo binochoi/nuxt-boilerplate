@@ -1,5 +1,5 @@
 export default defineNuxtRouteMiddleware(async (to) => {
-  const { session, fetchSession } = useAuth();
+  const { session } = useAuth();
   if (session.value) {
     switch (to.path) {
     case '/auth/login':
@@ -7,9 +7,5 @@ export default defineNuxtRouteMiddleware(async (to) => {
     default:
       break;
     }
-  }
-
-  if (import.meta.client) {
-    await fetchSession();
   }
 });

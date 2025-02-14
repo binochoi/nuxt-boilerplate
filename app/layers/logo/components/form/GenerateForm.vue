@@ -18,8 +18,10 @@ const submit = async () => {
       style: form.style,
       color: form.color === 'random' ? getOneRandomColor() : form.color,
     });
+    // eslint-disable-next-line no-console
     console.log(imageLink);
   } catch {
+    // eslint-disable-next-line no-console
     console.error('error');
   }
   loading.value = false;

@@ -15,6 +15,7 @@ export default defineService({
       });
       return { imageLink: response.image };
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.error(e);
       throw e;
     }

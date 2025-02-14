@@ -26,6 +26,7 @@ export default defineProvider(() => {
           image: response.data[0].url,
         };
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error('DALL-E API 오류:', error);
         return {
           success: false,
