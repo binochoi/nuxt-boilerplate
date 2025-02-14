@@ -5,6 +5,7 @@
 .nuxt
 .nitro
 .cache
+.wrangler
 .dev.vars
 dist
 

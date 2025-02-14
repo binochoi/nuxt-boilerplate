@@ -2,7 +2,6 @@
 import { betterAuth } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { db, schema } from '../drizzle/drizzle';
-import { useConfig } from '../../../server/config';
 
 type Options = {
   baseURL: string,
@@ -54,6 +53,6 @@ const useAuth = ({
 
 let auth: ReturnType<typeof useAuth>;
 export const Auth = () => auth ??= useAuth({
-  ...useConfig(process.env as any),
-  secret: useConfig(process.env as any).authSecret,
+  ...useRuntimeConfig(),
+  secret: useRuntimeConfig().authSecret,
 });

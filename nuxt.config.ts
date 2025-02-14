@@ -1,10 +1,30 @@
 import { fileURLToPath } from 'url';
 import Aura from '@primevue/themes/aura';
-import { useConfig } from './server/config';
 
+export const useConfig = (env: Record<string, string>) => {
+  const isDev = env.NODE_ENV === 'development';
+  const baseURL = env.BASE_URL ?? isDev ? 'https://localhost:5821' : 'https://lymgo.com';
+  return {
+    baseURL,
+    isDev,
+    isProd: !isDev,
+    dbConnectionStr: env.DB_CONNECTION_STRING,
+    authSecret: env.AUTH_SECRET,
+    social: {
+      google: {
+        clientId: env.GOOGLE_CLIENT_ID,
+        clientSecret: env.GOOGLE_CLIENT_SECRET,
+      },
+    },
+    public: {
+      MEDIA_URL: isDev ? 'https://localhost:5821/__media__' : 'https://media.lymgo.com',
+    },
+  };
+};
+const runtimeConfig = useConfig(process.env as any);
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  runtimeConfig: useConfig(process.env as any),
+  runtimeConfig,
   imports: {
     dirs: [
       './app/types/*.d.ts',
@@ -68,6 +88,7 @@ export default defineNuxtConfig({
     server: fileURLToPath(new URL('./server', import.meta.url)),
   },
   experimental: {
+    asyncContext: true,
     typedPages: true,
   },
   compatibilityDate: '2024-11-01',
@@ -93,9 +114,12 @@ export default defineNuxtConfig({
       external: ['cloudflare:sockets'],
     },
     routeRules: {
-      '/__media__/**': {
-        proxy: 'https://media.lymgo.com/**',
-      },
+      ...(
+        runtimeConfig.baseURL.includes('localhost') ? {
+          '/__media__/**': {
+            proxy: 'https://media.lymgo.com/**',
+          },
+        } : undefined),
     },
   },
   typescript: {
