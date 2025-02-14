@@ -27,6 +27,7 @@ const menuList = computed(() => [
         fetchOptions: {
           onSuccess: () => {
             showAlert('로그아웃 되었습니다. 감사합니다.');
+            router.push('/');
           },
         },
       });
