@@ -1,26 +1,27 @@
 <script setup lang="ts">
 const router = useRouter();
 const route = useRoute();
+const { t } = useI18n();
 const auth = useAuth();
 const isSelected = (path: string) => route.fullPath.includes(path);
 const selectedClass = 'font-bold';
 const menuList = computed(() => [
   {
-    label: 'Pricing',
+    label: t('label.pricing'),
     class: isSelected('/pricing') && selectedClass,
     command() {
       router.push('/pricing');
     },
   },
   {
-    label: 'Generate',
+    label: t('label.generate'),
     class: isSelected('/generate') && selectedClass,
     command() {
       router.push('/generate');
     },
   },
   auth.session.value ? {
-    label: 'Logout',
+    label: t('label.logout'),
     command: async () => {
       await showConfirm('정말 로그아웃 하시겠어요?');
       await auth.client.signOut({
@@ -33,7 +34,7 @@ const menuList = computed(() => [
       });
     },
   } : {
-    label: 'Sign Up',
+    label: t('label.signup'),
     command: () => router.push('/login'),
   },
 ]);

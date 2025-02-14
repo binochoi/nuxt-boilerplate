@@ -5,7 +5,7 @@ import ButtonTemplate from './ButtonTemplate.vue';
 <template>
   <ButtonTemplate>
     <template #label>
-      Continue with Discord
+      {{ $t('start_oauth_with', { provider: 'Discord' }) }}
     </template>
     <template #icon>
       <svg

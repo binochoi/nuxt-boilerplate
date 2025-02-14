@@ -5,7 +5,7 @@ import ButtonTemplate from './ButtonTemplate.vue';
 <template>
   <ButtonTemplate>
     <template #label>
-      Continue with Google
+      {{ $t('start_oauth_with', { provider: 'Google' }) }}
     </template>
     <template #icon>
       <Icon

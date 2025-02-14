@@ -64,11 +64,18 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
   ],
   i18n: {
+    vueI18n: './app/i18n/config.ts',
     locales: [
       { code: 'en', language: 'en-US' },
-      { code: 'kr', language: 'kr-KR' },
+      { code: 'ko', language: 'ko-KR' },
     ],
+    strategy: 'no_prefix',
     defaultLocale: 'en',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root', // recommended
+    },
   },
   primevue: {
     components: {

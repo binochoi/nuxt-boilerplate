@@ -5,7 +5,7 @@ import ButtonTemplate from './ButtonTemplate.vue';
 <template>
   <ButtonTemplate>
     <template #label>
-      Continue with Apple
+      {{ $t('start_oauth_with', { provider: 'Apple' }) }}
     </template>
     <template #icon>
       <Icon

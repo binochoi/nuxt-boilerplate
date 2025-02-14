@@ -1,23 +1,23 @@
 <script setup lang="ts">
-
+const { t } = useI18n();
 const prices = [
   {
-    label: 'Free',
-    description: '1 credit',
+    label: t('pricing.free.label'),
+    description: t('pricing.free.description'),
     price: '$0',
     pricedProduct: '1 credits',
     features: ['1 credit per week (if not had one)'],
   },
   {
-    label: 'Starter',
-    description: 'For startup',
+    label: t('pricing.starter.label'),
+    description: t('pricing.starter.description'),
     price: '$3',
     pricedProduct: '5 credits',
     features: ['5 workspaces', 'Unlimited testimonials', 'Unlimited projects'],
   },
   {
-    label: 'Professional',
-    description: 'For established companies',
+    label: t('pricing.business.label'),
+    description: t('pricing.business.description'),
     price: '$27',
     pricedProduct: '50 credits',
     features: ['5 workspaces', 'Unlimited testimonials', 'Unlimited projects'],
