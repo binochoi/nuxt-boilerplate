@@ -3,7 +3,7 @@ import Aura from '@primevue/themes/aura';
 
 export const useConfig = (env: Record<string, string>) => {
   const isDev = env.NODE_ENV === 'development';
-  const baseURL = env.BASE_URL ?? isDev ? 'https://localhost:5821' : 'https://lymgo.com';
+  const baseURL = isDev ? 'https://localhost:5821' : 'https://lymgo.com';
   return {
     baseURL,
     isDev,
