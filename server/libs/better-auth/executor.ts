@@ -1,4 +1,4 @@
-import { BetterAuth } from './better-auth';
+import { Auth } from './better-auth';
 
-const auth = BetterAuth(process.env as any);
+const auth = Auth();
 export { auth };

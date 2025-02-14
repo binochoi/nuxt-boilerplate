@@ -1,3 +1,6 @@
+<script setup lang="ts">
+const auth = useAuth();
+</script>
 <template>
   <div class="max-w-6xl m-auto">
     <div class="flex justify-between items-center">
@@ -32,7 +35,24 @@
               // {
               //   label: 'Showcase',
               // },
-              {
+              auth.session.value ? {
+                label: 'Logout',
+                command: async () => {
+                  await showConfirm('정말 로그아웃 하시겠어요?');
+                  try {
+                    await auth.client.signOut({
+                      fetchOptions: {
+                        onSuccess: () => {
+                          showAlert('로그아웃 되었습니다. 감사합니다.');
+                        }
+                      }
+                    });
+                  } catch (err) {
+                    console.log('sival')
+                    console.log(err);
+                  }
+                },
+              } : {
                 label: 'Sign Up',
                 command: () => $router.push('/login')
               }

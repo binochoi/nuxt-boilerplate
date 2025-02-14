@@ -1,3 +1,6 @@
+<script setup lang="ts">
+const goToOAuth = (provider: 'google') => useAuth().client.signIn.social({ provider });
+</script>
 <template>
   <div class="flex items-center justify-center min-h-screen bg-gray-100">
     <div
@@ -7,7 +10,7 @@
       "
     >
       <AuthLoginSocialDiscordButton />
-      <AuthLoginSocialGoogleButton />
+      <AuthLoginSocialGoogleButton @click="goToOAuth('google')" />
       <AuthLoginSocialAppleButton />
     </div>
   </div>

@@ -1,31 +1,44 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { betterAuth } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
-import { RuntimeConfig } from 'nuxt/schema';
 import { db, schema } from '../drizzle/drizzle';
+import { useConfig } from '../../../server/config';
 
-export const BetterAuth = (env: RuntimeConfig) => betterAuth({
-  baseURL: env.BASE_URL!,
-  trustedOrigins: [env.BASE_URL!],
-  secret: env.BETTER_AUTH_SECRET!,
+type Options = {
+  baseURL: string,
+  secret: string,
+  social: {
+    google: {
+      clientId: string,
+      clientSecret: string,
+    }
+  }
+}
+const useAuth = ({
+  baseURL,
+  secret,
+  social,
+}: Options) => betterAuth({
+  baseURL,
+  trustedOrigins: [baseURL],
+  secret,
   user: {
     additionalFields: {
     },
   },
-  database: drizzleAdapter(db(env.DB_CONNECTION_STRING!), {
+  database: drizzleAdapter(db(), {
     provider: 'pg',
     schema,
   }),
   socialProviders: {
     google: {
-      clientId: env.GOOGLE_CLIENT_ID!,
-      clientSecret: env.GOOGLE_CLIENT_SECRET!,
-      redirectURI: `${env.BASE_URL}/api/auth/callback/google`,
+      redirectURI: `${baseURL}/api/auth/callback/google`,
+      ...social.google,
     },
   },
   session: {
-    expiresIn: 60 * 60 * 24 * 7, // 7 days
-    updateAge: 60 * 60 * 24, // 1 day (every 1 day the session expiration is updated)
+    expiresIn: 60 * 60 * 24 * 50, // 50 days
+    updateAge: 60 * 60 * 24 * 7, // 7 day (every 1 day the session expiration is updated)
   },
   advanced: {
     cookiePrefix: 'app-session',
@@ -33,4 +46,10 @@ export const BetterAuth = (env: RuntimeConfig) => betterAuth({
   logger: {
     level: 'info',
   },
+});
+
+let auth: ReturnType<typeof useAuth>;
+export const Auth = () => auth ??= useAuth({
+  ...useConfig(process.env),
+  secret: useConfig(process.env).authSecret,
 });
