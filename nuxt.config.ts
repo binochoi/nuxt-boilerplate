@@ -5,6 +5,7 @@ export const useConfig = (env: Record<string, string>) => {
   const isDev = env.NODE_ENV === 'development';
   const baseURL = isDev ? 'https://localhost:5821' : 'https://lymgo.com';
   return {
+    appName: 'Lymgo',
     baseURL,
     isDev,
     isProd: !isDev,
@@ -21,10 +22,10 @@ export const useConfig = (env: Record<string, string>) => {
     },
   };
 };
-const runtimeConfig = useConfig(process.env as any);
+const config = useConfig(process.env as any);
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  runtimeConfig,
+  runtimeConfig: config,
   imports: {
     dirs: [
       './types/*.d.ts',
@@ -114,6 +115,18 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no',
+      link: [
+        {
+          rel: 'icon', type: 'image/png', href: `${config.public.MEDIA_URL}/assets/favicons/favicon-96x96.png`, sizes: '96x96',
+        },
+        { rel: 'icon', type: 'image/svg+xml', href: `${config.public.MEDIA_URL}/assets/favicons/favicon.svg` },
+        { rel: 'shortcut icon', href: `${config.public.MEDIA_URL}/assets/favicons/favicon.ico` },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: `${config.public.MEDIA_URL}/assets/favicons/apple-touch-icon.png` },
+        { rel: 'manifest', href: `${config.public.MEDIA_URL}/assets/favicons/site.webmanifest` },
+      ],
+      meta: [
+        { name: 'apple-mobile-web-app-title', content: config.appName },
+      ],
     },
     rootAttrs: {
       id: 'app',
@@ -130,7 +143,7 @@ export default defineNuxtConfig({
     },
     routeRules: {
       ...(
-        runtimeConfig.baseURL.includes('localhost') ? {
+        config.baseURL.includes('localhost') ? {
           '/__media__/**': {
             proxy: 'https://media.lymgo.com/**',
           },
