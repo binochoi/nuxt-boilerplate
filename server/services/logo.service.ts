@@ -1,5 +1,5 @@
 import { logoStyles } from '../prompts';
-import DALLE from '../providers/Dalle';
+import DALLE from '../providers/DALLE';
 import GPT from '../providers/GPT';
 import { LogoPrompt } from '../types/logo';
 
