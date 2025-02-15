@@ -7,8 +7,8 @@ defineProps<{
   <div
     class="
   flex flex-row items-center gap-2 px-4 py-2 cursor-pointer opacity-60
-  hover:scale-110 hover:opacity-100
-  active:scale-110 active:opacity-100
+  hover:scale-110 hover:opacity-100 hover:text-primary-400
+  active:scale-110 active:opacity-100 active:text-primary-400
   transition-all
   "
   >

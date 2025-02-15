@@ -38,6 +38,15 @@ watch(
 </template>
 
 <style lang="scss">
+@import './assets/styles/mixins/generate-color-palette.scss';
+
+:root {
+    @include generate-color-palette('color-primary', (249.57, 100%));
+    @include generate-color-palette('color-secondary', (218.64, 100%));
+    @include generate-color-palette('color-tertiary', (195.65, 100%));
+    --app-bg-color: 0, 0%, 100%;
+    --app-text-color: 0, 0%, 10%;
+}
 body {
   @apply select-none;
   -moz-osx-font-smoothing: grayscale;

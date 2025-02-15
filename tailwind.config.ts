@@ -15,7 +15,6 @@ export default {
         primary: generateColorPalette('--color-primary'),
         secondary: generateColorPalette('--color-secondary'),
         tertiary: generateColorPalette('--color-tertiary'),
-        quaternary: generateColorPalette('--color-quaternary'),
       },
     },
   },
