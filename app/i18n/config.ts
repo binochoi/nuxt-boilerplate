@@ -4,10 +4,13 @@ export default defineI18nConfig(() => ({
   fallbackLocale: 'en',
   messages: {
     en: {
+      slogan: 'Logo Generator',
       label: {
+        appName: 'Lymgo',
         pricing: 'Pricing',
         generate: 'Generate',
         logout: 'Logout',
+        login: 'Login',
         signup: 'Sign Up',
       },
       start_oauth_with: 'Continue with {provider}',
@@ -30,10 +33,12 @@ export default defineI18nConfig(() => ({
       },
     },
     ko: {
+      slogan: '로고 생성기',
       label: {
         pricing: '가격',
         generate: '만들기',
         logout: '로그아웃',
+        login: '로그인',
         signup: '시작하기',
       },
       start_oauth_with: '{provider}로 시작하기',

@@ -1,4 +1,12 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+
+useHead({
+  title: t('label.login'),
+});
+
 const goToOAuth = (provider: 'google') => useAuth().client.signIn.social({ provider });
 </script>
 <template>
