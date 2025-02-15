@@ -3,21 +3,31 @@ import SelectStyle from './SelectStyle.vue';
 import DescriptionForm from './DescriptionForm.vue';
 import ColorPicker from './ColorPicker.vue';
 
+const router = useRouter();
 const { form, canSubmit } = useLogoGenerateForm();
 const loading = ref(false);
 const { logo } = useTrpcClient();
+const { user } = useAuth();
 const submit = async () => {
+  if (
+    !user.value
+    || !form.style
+  ) {
+    return;
+  }
+  if (!user.value.credit) {
+    router.push('/pricing');
+    return;
+  }
   loading.value = true;
   try {
-    if (!form.style) {
-      return;
-    }
     const { getOneRandomColor } = useLogoColorPicker();
     const { imageLink } = await logo.generate.mutate({
       ...form,
       style: form.style,
       color: form.color === 'random' ? getOneRandomColor() : form.color,
     });
+    user.value.credit -= 1;
     // eslint-disable-next-line no-console
     console.log(imageLink);
   } catch {
