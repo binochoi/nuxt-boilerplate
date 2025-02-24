@@ -36,7 +36,7 @@ export default defineNuxtConfig({
     autoImport: true,
   },
   devServer: {
-    port: Number(process.env.PORT) || 5821,
+    port: Number(process.env.PORT),
     https: {
       cert: './localhost.pem',
       key: './localhost-key.pem',
@@ -127,6 +127,9 @@ export default defineNuxtConfig({
       meta: [
         { name: 'apple-mobile-web-app-title', content: config.appName },
       ],
+    },
+    rootAttrs: {
+      id: 'app',
     },
     rootAttrs: {
       id: 'app',
