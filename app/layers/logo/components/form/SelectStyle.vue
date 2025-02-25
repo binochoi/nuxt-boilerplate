@@ -26,7 +26,9 @@ const isSelected = (selected: Style) => style.value === selected;
         <div
           class="w-14 h-14 rounded-2xl bg-slate-300 overflow-hidden relative shadow-sm"
         >
-          <TheImage :src="`${useRuntimeConfig().public.MEDIA_URL}/showcases/${styleName}.webp?ver=4`" />
+          <TheImage
+            :src="`${useRuntimeConfig().public.MEDIA_URL}/showcases/${styleName}.webp?ver=4`"
+          />
           <div
             v-show="isSelected(styleName)"
             :class="[
@@ -41,7 +43,10 @@ const isSelected = (selected: Style) => style.value === selected;
             />
           </div>
         </div>
-        <span class="text-sm opacity-70">{{ styleName }}</span>
+        <span
+          :class="isSelected(styleName) ? 'opacity-40' : 'opacity-0'"
+          class="text-sm mt-1 transition-opacity"
+        >{{ styleName }}</span>
       </button>
     </div>
   </div>

@@ -23,11 +23,11 @@ const menuList = computed(() => [
   auth.session.value ? {
     label: t('label.logout'),
     command: async () => {
-      await showConfirm('정말 로그아웃 하시겠어요?');
+      await showConfirm(t('ask_sure_logout'));
       await auth.client.signOut({
         fetchOptions: {
           onSuccess: () => {
-            showAlert('로그아웃 되었습니다. 감사합니다.');
+            showAlert(t('ask_logout_success'));
             router.push('/');
           },
         },

@@ -2,18 +2,22 @@
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
-
 useHead({
   title: t('label.pricing'),
 });
-const prices = [
-  {
-    label: t('pricing.free.label'),
-    description: t('pricing.free.description'),
-    price: '$0',
-    pricedProduct: '1 credits',
-    features: ['1 credit per week (if not had one)'],
-  },
+const { session } = useAuth();
+const prices = computed(() => [
+  ...(
+    session.value
+      ? []
+      : [{
+        label: t('pricing.free.label'),
+        description: t('pricing.free.description'),
+        price: '$0',
+        pricedProduct: '1 credits',
+        features: ['1 credit per week (if not had one)'],
+      }]
+  ),
   {
     label: t('pricing.starter.label'),
     description: t('pricing.starter.description'),
@@ -28,7 +32,7 @@ const prices = [
     pricedProduct: '50 credits',
     features: ['5 workspaces', 'Unlimited testimonials', 'Unlimited projects'],
   },
-];
+]);
 </script>
 <template>
   <div class="w-full overflow-x-auto">

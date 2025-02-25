@@ -3,7 +3,8 @@ import Aura from '@primevue/themes/aura';
 
 export const useConfig = (env: Record<string, string>) => {
   const isDev = env.NODE_ENV === 'development';
-  const baseURL = isDev ? 'https://localhost:5821' : 'https://lymgo.com';
+  const port = Number(process.env.PORT || 5821);
+  const baseURL = isDev ? `https://localhost:${port}` : 'https://lymgo.com';
   return {
     appName: 'Lymgo',
     baseURL,
@@ -18,7 +19,7 @@ export const useConfig = (env: Record<string, string>) => {
       },
     },
     public: {
-      MEDIA_URL: isDev ? 'https://localhost:5821/__media__' : 'https://media.lymgo.com',
+      MEDIA_URL: isDev ? `${baseURL}/__media__` : 'https://media.lymgo.com',
     },
   };
 };
@@ -131,9 +132,6 @@ export default defineNuxtConfig({
     rootAttrs: {
       id: 'app',
     },
-    rootAttrs: {
-      id: 'app',
-    },
   },
   future: { compatibilityVersion: 4 },
   srcDir: 'app/',
@@ -146,7 +144,7 @@ export default defineNuxtConfig({
     },
     routeRules: {
       ...(
-        config.baseURL.includes('localhost') ? {
+        config.isDev ? {
           '/__media__/**': {
             proxy: 'https://media.lymgo.com/**',
           },

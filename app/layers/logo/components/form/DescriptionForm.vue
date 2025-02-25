@@ -2,8 +2,14 @@
 
 const description = defineModel<string>({ required: true });
 const isAiGenerating = ref(false);
+const { session } = useAuth();
+const { t } = useI18n();
 const { logo } = useTrpcClient();
 const suggestLogoShape = async () => {
+  if (!session.value) {
+    showToast(t('ask_login_required'));
+    return;
+  }
   isAiGenerating.value = true;
   try {
     const sentence = await logo.suggestLogoShape.query();

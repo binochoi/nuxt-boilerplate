@@ -16,7 +16,7 @@ export default defineI18nConfig(() => ({
       start_oauth_with: 'Continue with {provider}',
 
       ask_sure_logout: 'Are you sure you want to sign out?',
-
+      ask_login_required: 'Login is required !',
       pricing: {
         free: {
           label: 'Free',
@@ -44,7 +44,7 @@ export default defineI18nConfig(() => ({
       start_oauth_with: '{provider}로 시작하기',
 
       ask_sure_logout: '정말 로그아웃 하시겠어요?',
-
+      ask_login_required: '로그인이 필요합니다 !',
       pricing: {
         free: {
           label: '무료',
