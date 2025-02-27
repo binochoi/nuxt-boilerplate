@@ -1,8 +1,8 @@
 import { fileURLToPath } from 'url';
 import Aura from '@primevue/themes/aura';
-import getConfig from './server/config';
+import { useBuildtimeConfig } from './server/config';
 
-const config = getConfig();
+const config = useBuildtimeConfig();
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   runtimeConfig: config,

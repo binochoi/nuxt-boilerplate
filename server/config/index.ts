@@ -5,7 +5,7 @@ const assert = (key: string) => {
   }
   return value;
 };
-const config = () => {
+export const useBuildtimeConfig = () => {
   const isDev = process.env.NODE_ENV === 'development';
   const port = Number(process.env.PORT || 5821);
   const baseURL = isDev ? `https://localhost:${port}` : 'https://lymgo.com';
@@ -34,5 +34,4 @@ const config = () => {
   };
 };
 
-export default config;
-export type Config = ReturnType<typeof config>;
+export type Config = ReturnType<typeof useBuildtimeConfig>;

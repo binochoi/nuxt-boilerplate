@@ -1,6 +1,6 @@
-import getConfig from '../../config';
+import { useBuildtimeConfig } from '../../config';
 import useAuth from './better-auth';
 
-const config = getConfig();
+const config = useBuildtimeConfig();
 const auth = useAuth(config);
 export { auth };

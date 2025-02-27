@@ -12,6 +12,7 @@ export default defineService({
   dalle: DALLE,
   gpt: GPT,
 }, ({ dalle, gpt }) => {
+  const config = useRuntimeConfig();
   const generateImageLink = async (prompt: LogoPrompt) => {
     try {
       const response = await dalle.prompt({
@@ -33,7 +34,7 @@ export default defineService({
       });
     }
     const blob = await MediaLinkDownloader().download(imageLink);
-    const { id } = await db().transaction(async (tx) => {
+    const { id } = await db(config.dbConnectionStr).transaction(async (tx) => {
       const [{ id }] = await MediaRepository(tx).insertOne({ userId });
       await UserRepository(tx).payOneCredit(userId);
       return { id };
