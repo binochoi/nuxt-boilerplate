@@ -12,6 +12,7 @@ export default defineI18nConfig(() => ({
         logout: 'Logout',
         login: 'Login',
         signup: 'Sign Up',
+        archies: 'Showcase',
       },
       start_oauth_with: 'Continue with {provider}',
 
@@ -41,6 +42,7 @@ export default defineI18nConfig(() => ({
         logout: '로그아웃',
         login: '로그인',
         signup: '시작하기',
+        archives: '보관함',
       },
       start_oauth_with: '{provider}로 시작하기',
 

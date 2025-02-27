@@ -20,6 +20,12 @@ const menuList = computed(() => [
       router.push('/generate');
     },
   },
+  ...(auth.session.value ? [{
+    label: t('label.archives'),
+    command() {
+      router.push('/archives');
+    },
+  }] : []),
   auth.session.value ? {
     label: t('label.logout'),
     command: async () => {

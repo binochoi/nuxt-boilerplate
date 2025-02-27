@@ -32,6 +32,7 @@ export default defineNuxtConfig({
   ],
   extends: [
     './app/layers/logo',
+    './app/layers/archive',
     './app/layers/auth',
     './app/layers/pricing',
   ],
