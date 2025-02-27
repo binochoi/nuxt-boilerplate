@@ -85,7 +85,6 @@ export default defineNuxtConfig({
     server: fileURLToPath(new URL('./server', import.meta.url)),
   },
   experimental: {
-    asyncContext: true,
     typedPages: true,
   },
   compatibilityDate: '2024-11-01',
@@ -159,6 +158,7 @@ export default defineNuxtConfig({
       },
     ],
   },
+  logLevel: 'verbose',
 
   devtools: { enabled: false },
   ssr: false,

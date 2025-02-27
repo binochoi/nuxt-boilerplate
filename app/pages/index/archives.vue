@@ -1,6 +1,6 @@
 <template>
   <div
-    class="max-w-3xl m-auto"
+    class="max-w-2xl m-auto mt-10"
   >
     <ArchiveShowcase />
   </div>

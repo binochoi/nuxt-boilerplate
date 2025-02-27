@@ -1,7 +1,7 @@
 export const useArchiveAPI = () => {
-  const client = useTrpcClient();
+  const { archive } = useTrpcClient();
 
   return {
-    getShowcaseList: () => client.archive.getShowcaseList.query(),
+    getShowcaseList: () => archive.getShowcaseList.query(),
   };
 };

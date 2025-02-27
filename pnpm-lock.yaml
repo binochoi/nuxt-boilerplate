@@ -101,6 +101,9 @@ importers:
       sass:
         specifier: ^1.83.0
         version: 1.85.0
+      superjson:
+        specifier: ^2.2.2
+        version: 2.2.2
       tailwindcss:
         specifier: ^3.4.7
         version: 3.4.17

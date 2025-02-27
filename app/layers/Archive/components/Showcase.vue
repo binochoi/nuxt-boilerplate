@@ -3,7 +3,10 @@ import { useArchiveAPI } from '../apis/useArchiveAPI';
 import List from './Showcase/List.vue';
 
 const { getShowcaseList } = useArchiveAPI();
-const items = await getShowcaseList();
+const items = ref<any[]>([]);
+onMounted(async () => {
+  items.value = await getShowcaseList();
+});
 </script>
 
 <template>
