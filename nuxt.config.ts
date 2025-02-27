@@ -97,12 +97,12 @@ export default defineNuxtConfig({
       viewport: 'width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no',
       link: [
         {
-          rel: 'icon', type: 'image/png', href: `${config.public.MEDIA_URL}/assets/favicons/favicon-96x96.png`, sizes: '96x96',
+          rel: 'icon', type: 'image/png', href: `${config.media.baseURL}/assets/favicons/favicon-96x96.png`, sizes: '96x96',
         },
-        { rel: 'icon', type: 'image/svg+xml', href: `${config.public.MEDIA_URL}/assets/favicons/favicon.svg` },
-        { rel: 'shortcut icon', href: `${config.public.MEDIA_URL}/assets/favicons/favicon.ico` },
-        { rel: 'apple-touch-icon', sizes: '180x180', href: `${config.public.MEDIA_URL}/assets/favicons/apple-touch-icon.png` },
-        { rel: 'manifest', href: `${config.public.MEDIA_URL}/assets/favicons/site.webmanifest` },
+        { rel: 'icon', type: 'image/svg+xml', href: `${config.media.baseURL}/assets/favicons/favicon.svg` },
+        { rel: 'shortcut icon', href: `${config.media.baseURL}/assets/favicons/favicon.ico` },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: `${config.media.baseURL}/assets/favicons/apple-touch-icon.png` },
+        { rel: 'manifest', href: `${config.media.baseURL}/assets/favicons/site.webmanifest` },
       ],
       meta: [
         { name: 'apple-mobile-web-app-title', content: config.appName },

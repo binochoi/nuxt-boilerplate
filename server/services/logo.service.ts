@@ -33,16 +33,16 @@ export default defineService({
         message: 'image link is not found',
       });
     }
-    const blob = await MediaLinkDownloader().download(imageLink);
+    const blob = await MediaLinkDownloader().downloadByBlob(imageLink);
     const { id } = await db(config.dbConnectionStr).transaction(async (tx) => {
       const [{ id }] = await MediaRepository(tx).insertOne({ userId });
       await UserRepository(tx).payOneCredit(userId);
       return { id };
     });
     await R2().upload({
-      key: id,
+      key: `generated/raw/${id}`,
       bucketName: 'lymgo',
-      body: blob,
+      body: Buffer.from(await blob.arrayBuffer()),
     });
     return {
       fileId: id,

@@ -8,6 +8,7 @@ const { t } = useI18n();
 const { form, canSubmit } = useLogoGenerateForm();
 const loading = ref(false);
 const { logo } = useTrpcClient();
+const config = useRuntimeConfig();
 const { user } = useAuth();
 const submit = async () => {
   if (
@@ -24,15 +25,20 @@ const submit = async () => {
   loading.value = true;
   try {
     const { getOneRandomColor } = useLogoColorPicker();
-    const { imageLink } = await logo.generate.mutate({
+    const { fileId } = await logo.generate.mutate({
       ...form,
       style: form.style,
       color: form.color === 'random' ? getOneRandomColor() : form.color,
     });
     user.value.credit -= 1;
+    const imageURL = `${config.public.media.baseURL}/generated/raw/${fileId}`;
+    console.log({ imageURL });
     // eslint-disable-next-line no-console
-    console.log(imageLink);
-    removeImageBackground(imageLink || '');
+    const removed = await removeImageBackground(imageURL);
+    console.log({
+      imageURL,
+      removed,
+    });
   } catch {
     // eslint-disable-next-line no-console
     console.error('error');

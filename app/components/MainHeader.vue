@@ -48,7 +48,7 @@ const menuList = computed(() => [
       >
         <div class="w-28 h-28">
           <TheImage
-            :src="`${useRuntimeConfig().public.MEDIA_URL}/logo.webp`"
+            :src="`${useRuntimeConfig().public.media.baseURL}/logo.webp`"
           />
         </div>
       </NuxtLink>

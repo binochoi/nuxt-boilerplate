@@ -27,7 +27,7 @@ const isSelected = (selected: Style) => style.value === selected;
           class="w-14 h-14 rounded-2xl bg-slate-300 overflow-hidden relative shadow-sm"
         >
           <TheImage
-            :src="`${useRuntimeConfig().public.MEDIA_URL}/showcases/${styleName}.webp?ver=4`"
+            :src="`${useRuntimeConfig().public.media.baseURL}/showcases/${styleName}.webp?ver=4`"
           />
           <div
             v-show="isSelected(styleName)"

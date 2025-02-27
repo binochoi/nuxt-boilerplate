@@ -18,7 +18,7 @@ export default () => {
     upload: async ({ bucketName, key, body }: {
       bucketName: string,
       key: string,
-      body: Buffer | Blob | ReadableStream,
+      body: Buffer | ReadableStream,
     }) => {
       const cmd = new PutObjectCommand({
         Bucket: bucketName,

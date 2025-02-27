@@ -9,6 +9,9 @@ export const useBuildtimeConfig = () => {
   const isDev = process.env.NODE_ENV === 'development';
   const port = Number(process.env.PORT || 5821);
   const baseURL = isDev ? `https://localhost:${port}` : 'https://lymgo.com';
+  const media = {
+    baseURL: isDev ? `${baseURL}/__media__` : 'https://media.lymgo.com',
+  };
   return {
     appName: 'Lymgo',
     baseURL,
@@ -28,10 +31,8 @@ export const useBuildtimeConfig = () => {
         clientSecret: assert('GOOGLE_CLIENT_SECRET'),
       },
     },
-    public: {
-      MEDIA_URL: isDev ? `${baseURL}/__media__` : 'https://media.lymgo.com',
-    },
+    media,
+    public: { media },
   };
 };
-
 export type Config = ReturnType<typeof useBuildtimeConfig>;
