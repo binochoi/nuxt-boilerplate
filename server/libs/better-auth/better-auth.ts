@@ -2,22 +2,14 @@
 import { betterAuth } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { db, schema } from '../drizzle/drizzle';
+import { Config } from '../../config';
 
-type Options = {
-  baseURL: string,
-  secret: string,
-  social: {
-    google: {
-      clientId: string,
-      clientSecret: string,
-    }
-  }
-}
 const useAuth = ({
   baseURL,
-  secret,
+  authSecret: secret,
   social,
-}: Options) => betterAuth({
+  dbConnectionStr,
+}: Config) => betterAuth({
   baseURL,
   trustedOrigins: [baseURL],
   secret,
@@ -29,7 +21,7 @@ const useAuth = ({
       },
     },
   },
-  database: drizzleAdapter(db(), {
+  database: drizzleAdapter(db(dbConnectionStr), {
     provider: 'pg',
     schema,
   }),
@@ -50,10 +42,8 @@ const useAuth = ({
     level: 'info',
   },
 });
-
-export const Auth = Singleton(
-  () => useAuth({
-    ...useRuntimeConfig(),
-    secret: useRuntimeConfig().authSecret,
-  }),
-);
+export default useAuth;
+export const Auth = () => useAuth({
+  ...useRuntimeConfig(),
+  authSecret: useRuntimeConfig().authSecret,
+});

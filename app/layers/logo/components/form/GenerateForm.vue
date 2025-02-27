@@ -4,6 +4,7 @@ import DescriptionForm from './DescriptionForm.vue';
 import ColorPicker from './ColorPicker.vue';
 
 const router = useRouter();
+const { t } = useI18n();
 const { form, canSubmit } = useLogoGenerateForm();
 const loading = ref(false);
 const { logo } = useTrpcClient();
@@ -16,6 +17,7 @@ const submit = async () => {
     return;
   }
   if (!user.value.credit) {
+    showAlert(t('require_credit'));
     router.push('/pricing');
     return;
   }
@@ -30,6 +32,7 @@ const submit = async () => {
     user.value.credit -= 1;
     // eslint-disable-next-line no-console
     console.log(imageLink);
+    removeImageBackground(imageLink || '');
   } catch {
     // eslint-disable-next-line no-console
     console.error('error');

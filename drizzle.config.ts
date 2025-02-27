@@ -1,4 +1,5 @@
 import { defineConfig } from 'drizzle-kit';
+import getConfig from './server/config';
 
 export default defineConfig({
   dialect: 'postgresql',
@@ -6,6 +7,6 @@ export default defineConfig({
   out: './.cache/.migrations',
   breakpoints: true,
   dbCredentials: {
-    url: useRuntimeConfig().dbConnectionStr || '',
+    url: getConfig().dbConnectionStr,
   },
 });

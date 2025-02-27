@@ -12,7 +12,7 @@ const isSelected = (selected: Style) => style.value === selected;
   <div class="overflow-x-auto">
     <div class="py-4 grid grid-cols-6 gap-2 max-md:inline-flex">
       <button
-        v-for="styleName in [...styles]"
+        v-for="styleName in styles"
         :key="styleName"
         :class="[
           'w-20',

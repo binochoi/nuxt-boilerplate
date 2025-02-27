@@ -1,29 +1,8 @@
 import { fileURLToPath } from 'url';
 import Aura from '@primevue/themes/aura';
+import getConfig from './server/config';
 
-export const useConfig = (env: Record<string, string>) => {
-  const isDev = env.NODE_ENV === 'development';
-  const port = Number(process.env.PORT || 5821);
-  const baseURL = isDev ? `https://localhost:${port}` : 'https://lymgo.com';
-  return {
-    appName: 'Lymgo',
-    baseURL,
-    isDev,
-    isProd: !isDev,
-    dbConnectionStr: env.DB_CONNECTION_STRING,
-    authSecret: env.AUTH_SECRET,
-    social: {
-      google: {
-        clientId: env.GOOGLE_CLIENT_ID,
-        clientSecret: env.GOOGLE_CLIENT_SECRET,
-      },
-    },
-    public: {
-      MEDIA_URL: isDev ? `${baseURL}/__media__` : 'https://media.lymgo.com',
-    },
-  };
-};
-const config = useConfig(process.env as any);
+const config = getConfig();
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   runtimeConfig: config,

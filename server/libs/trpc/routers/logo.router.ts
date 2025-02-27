@@ -5,6 +5,10 @@ import { inject } from '../inject';
 import logoService from '~~/server/services/logo.service';
 import { AuthGuard } from '~~/server/libs/trpc/guards/auth.guard';
 import { UserRepository } from '~~/server/repositories/user.repository';
+import { db } from '../../drizzle/drizzle';
+import { MediaRepository } from '~~/server/repositories/media.repository';
+import R2 from '~~/server/providers/R2';
+import { MediaLinkDownloader } from '~~/server/services/MediaLinkDownloader';
 
 const p = procedure
   .use(
@@ -23,10 +27,9 @@ export default router({
           message: 'credit is not enough',
         });
       }
-      const { imageLink } = await ctx.logoService.generate(input);
-      await UserRepository().payOneCredit(ctx.user.id);
+      const { fileId } = await ctx.logoService.generate(input, ctx.user.id);
       return {
-        imageLink,
+        fileId,
       };
     }),
   suggestLogoShape: p

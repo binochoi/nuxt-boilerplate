@@ -17,6 +17,7 @@ export default defineI18nConfig(() => ({
 
       ask_sure_logout: 'Are you sure you want to sign out?',
       ask_login_required: 'Login is required !',
+      require_credit: 'credit is required',
       pricing: {
         free: {
           label: 'Free',
@@ -45,6 +46,7 @@ export default defineI18nConfig(() => ({
 
       ask_sure_logout: '정말 로그아웃 하시겠어요?',
       ask_login_required: '로그인이 필요합니다 !',
+      require_credit: '로고를 생성하기 위해서는 크레딧이 필요합니다.',
       pricing: {
         free: {
           label: '무료',
