@@ -43,7 +43,4 @@ const useAuth = ({
   },
 });
 export default useAuth;
-export const Auth = () => useAuth({
-  ...useRuntimeConfig(),
-  authSecret: useRuntimeConfig().authSecret,
-});
+export const Auth = () => useAuth(useRuntimeConfig());
