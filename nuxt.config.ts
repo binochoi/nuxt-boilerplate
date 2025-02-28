@@ -129,6 +129,9 @@ export default defineNuxtConfig({
           },
         } : undefined),
     },
+    logLevel: 5,
+    debug: true,
+    errorHandler: './server/error.ts',
   },
   typescript: {
     tsConfig: {
