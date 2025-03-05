@@ -11,7 +11,7 @@
     "dev": "env-cmd -f .dev.vars nuxt dev",
     "lint": "eslint . --fix --ext .vue,.ts",
     "generate": "nuxt generate",
-    "check": "nuxt typecheck",
+    "check": "env-cmd -f .dev.vars nuxt typecheck",
     "preview": "run-s build preview.only",
     "preview.only": "env-cmd -f .dev.vars wrangler dev --port=5821 --local-protocol https --https-key-path ./localhost-key.pem --https-cert-path ./localhost.pem",
     "db:generate": "run-s db:generate.*",
