@@ -135,6 +135,7 @@ export default defineNuxtConfig({
   typescript: {
     tsConfig: {
       compilerOptions: {
+        strict: true,
         verbatimModuleSyntax: false,
         moduleResolution: 'bundler',
       },
