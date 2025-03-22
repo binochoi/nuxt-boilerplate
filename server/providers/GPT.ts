@@ -1,10 +1,9 @@
 import OpenAI from 'openai';
-import defineProvider from '../utils/defineProvider';
 
-export default defineProvider(() => {
+export default () => {
   const config = useRuntimeConfig();
   const openai = new OpenAI({
-    apiKey: config.OPENAI_API_KEY,
+    apiKey: config.openai.apiKey,
   });
   return {
     simplePrompt: async (prompt: string) => {
@@ -17,4 +16,4 @@ export default defineProvider(() => {
       return response.choices[0].message.content;
     },
   };
-});
+};

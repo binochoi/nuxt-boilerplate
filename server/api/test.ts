@@ -1,11 +1,11 @@
-import Dalle from '../providers/DALLE';
 import prompt from '../prompts/neon_realistic';
+import DALLE from '../providers/DALLE';
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async () => {
   if (useRuntimeConfig().isProd) {
     throw createError({ status: 404 });
   }
-  const dallE = Dalle.inject({ event });
+  const dallE = DALLE();
   const { image } = await dallE.prompt({
     prompt: prompt({
       color: 'navy',

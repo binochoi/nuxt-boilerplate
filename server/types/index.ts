@@ -1,5 +1,7 @@
 import type { RequestContext } from 'server/libs/trpc/trpc';
 
+import type { Auth } from '~~/server/libs/better-auth/better-auth';
+
 type Provider<T extends object> = {
   inject: (context: RequestContext) => T;
 }
@@ -11,3 +13,4 @@ type InjectDependencies<T extends {
 }
 
 export type { Provider, InjectDependencies };
+export type * from '~~/server/libs/better-auth/better-auth';

@@ -44,3 +44,6 @@ const useAuth = ({
 });
 export default useAuth;
 export const Auth = () => useAuth(useRuntimeConfig());
+type _Auth = ReturnType<typeof useAuth>;
+export type User = _Auth['$Infer']['Session']['user'];
+export type Session = _Auth['$Infer']['Session']['session'];

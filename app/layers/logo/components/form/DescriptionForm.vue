@@ -4,7 +4,7 @@ const description = defineModel<string>({ required: true });
 const isAiGenerating = ref(false);
 const { session } = useAuth();
 const { t } = useI18n();
-const { logo } = useTrpcClient();
+const { api } = useRPC();
 const suggestLogoShape = async () => {
   if (!session.value) {
     showToast(t('ask_login_required'));
@@ -12,7 +12,7 @@ const suggestLogoShape = async () => {
   }
   isAiGenerating.value = true;
   try {
-    const sentence = await logo.suggestLogoShape.query();
+    const sentence = await api.logo.shape.$get();
     if (!sentence) {
       return;
     }

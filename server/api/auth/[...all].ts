@@ -1,4 +1,4 @@
-import { Auth } from '../../libs/better-auth/better-auth';
+import { Auth } from '~~/server/libs/better-auth/better-auth';
 
 export default defineEventHandler(
   (e) => Auth()

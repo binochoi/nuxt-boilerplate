@@ -7,7 +7,7 @@ const router = useRouter();
 const { t } = useI18n();
 const { form, canSubmit } = useLogoGenerateForm();
 const loading = ref(false);
-const { logo } = useTrpcClient();
+const { api } = useRPC();
 const config = useRuntimeConfig();
 const { user } = useAuth();
 const submit = async () => {
@@ -23,26 +23,22 @@ const submit = async () => {
     return;
   }
   loading.value = true;
-  try {
-    const { getOneRandomColor } = useLogoColorPicker();
-    const { fileId } = await logo.generate.mutate({
+  const { getOneRandomColor } = useLogoColorPicker();
+  const { fileId } = await api.logo.$post({
+    body: {
       ...form,
       style: form.style,
       color: form.color === 'random' ? getOneRandomColor() : form.color,
-    });
-    user.value.credit -= 1;
-    const imageURL = `${config.public.media.baseURL}/generated/raw/${fileId}`;
-    console.log({ imageURL });
-    // eslint-disable-next-line no-console
-    const removed = await removeImageBackground(imageURL);
-    console.log({
-      imageURL,
-      removed,
-    });
-  } catch {
-    // eslint-disable-next-line no-console
-    console.error('error');
-  }
+    },
+  });
+  user.value.credit -= 1;
+  const imageURL = `${config.public.media.baseURL}/generated/raw/${fileId}`;
+  // eslint-disable-next-line no-console
+  const removed = await removeImageBackground(imageURL, { isDev: config.public.isDev });
+  console.log({
+    imageURL,
+    removed,
+  });
   loading.value = false;
 };
 </script>

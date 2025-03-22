@@ -1,29 +1,10 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n';
-import { useRoute } from 'vue-router';
-import { watch } from 'vue';
-
 const { t } = useI18n();
 useHead({
   titleTemplate: (title) => `${t('label.appName')} ${title ? `| ${title}` : ''}`,
   title: t('slogan'),
   meta: [],
 });
-
-// 라우트 변경 감지하여 title 자동 업데이트
-const route = useRoute();
-watch(
-  () => route.path,
-  () => {
-    const routeTitle = route.meta.title;
-    if (routeTitle) {
-      useHead({
-        title: t(`label.${routeTitle}`),
-      });
-    }
-  },
-  { immediate: true },
-);
 </script>
 
 <template>

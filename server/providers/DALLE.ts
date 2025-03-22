@@ -1,14 +1,13 @@
 import OpenAI from 'openai';
-import defineProvider from '../utils/defineProvider';
 
 type PromptParameter = {
   prompt: string;
   size?: '256x256' | '512x512' | '1024x1024';
 };
-export default defineProvider(() => {
+export default () => {
   const config = useRuntimeConfig();
   const openai = new OpenAI({
-    apiKey: config.OPENAI_API_KEY,
+    apiKey: config.openai.apiKey,
   });
   return {
     prompt: async (params: PromptParameter) => {
@@ -35,4 +34,4 @@ export default defineProvider(() => {
       }
     },
   };
-});
+};

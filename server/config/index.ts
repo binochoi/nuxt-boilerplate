@@ -1,3 +1,4 @@
+type Runtime = 'dev' | 'preview' | 'prod' | 'test';
 const assert = (key: string) => {
   const value = process.env[key];
   if (!value) {
@@ -6,13 +7,15 @@ const assert = (key: string) => {
   return value;
 };
 export const useBuildtimeConfig = () => {
-  const isDev = process.env.NODE_ENV === 'development';
+  const runtime = (process.env.RUNTIME || 'prod') as Runtime;
+  const isDev = (['dev', 'preview'] satisfies Runtime[]).includes(runtime as any);
   const port = Number(process.env.PORT || 5821);
-  const baseURL = isDev ? `https://localhost:${port}` : 'https://lymgo.com';
+  const baseURL = process.env.BASE_URL || isDev ? `https://localhost:${port}` : 'https://lymgo.com';
   const media = {
     baseURL: isDev ? `${baseURL}/__media__` : 'https://media.lymgo.com',
   };
   return {
+    runtime,
     appName: 'Lymgo',
     baseURL,
     isDev,
@@ -32,7 +35,10 @@ export const useBuildtimeConfig = () => {
       },
     },
     media,
-    public: { media },
+    public: { isDev, media },
+    openai: {
+      apiKey: assert('OPENAI_API_KEY'),
+    },
   };
 };
 export type Config = ReturnType<typeof useBuildtimeConfig>;

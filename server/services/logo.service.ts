@@ -8,10 +8,9 @@ import { UserRepository } from '../repositories/user.repository';
 import { LogoPrompt } from '../types/logo';
 import { MediaLinkDownloader } from './MediaLinkDownloader';
 
-export default defineService({
-  dalle: DALLE,
-  gpt: GPT,
-}, ({ dalle, gpt }) => {
+export default () => {
+  const dalle = DALLE();
+  const gpt = GPT();
   const config = useRuntimeConfig();
   const generateImageLink = async (prompt: LogoPrompt) => {
     try {
@@ -34,7 +33,7 @@ export default defineService({
       });
     }
     const blob = await MediaLinkDownloader().downloadByBlob(imageLink);
-    const { id } = await db(config.dbConnectionStr).transaction(async (tx) => {
+    const { id } = await db(config.dbConnectionStr).transaction<{ id: string }>(async (tx) => {
       const [{ id }] = await MediaRepository(tx).insertOne({ userId });
       await UserRepository(tx).payOneCredit(userId);
       return { id };
@@ -48,7 +47,7 @@ export default defineService({
       fileId: id,
     };
   };
-  const suggestLogoShape = () => gpt.simplePrompt(`
+  const suggestLogoShape = async () => gpt.simplePrompt(`
     I'm imagining random shape.
     it can be animals, fishes, plants, decoration, objects, people,
     Just give me a quick look about it.
@@ -61,4 +60,4 @@ export default defineService({
     generate,
     suggestLogoShape,
   };
-});
+};

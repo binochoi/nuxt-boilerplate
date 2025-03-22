@@ -1,5 +1,6 @@
 import { fileURLToPath } from 'url';
 import Aura from '@primevue/themes/aura';
+import rpc from 'nitro-rpc-definition';
 import { useBuildtimeConfig } from './server/config';
 
 const config = useBuildtimeConfig();
@@ -116,10 +117,10 @@ export default defineNuxtConfig({
   srcDir: 'app/',
   serverDir: 'server/',
   nitro: {
-    preset: 'cloudflare_module',
     minify: false,
+    preset: 'cloudflare_module',
     rollupConfig: {
-      external: ['cloudflare:sockets'],
+      external: ['cloudflare:sockets', '@aws-sdk/client-s3'],
     },
     routeRules: {
       ...(
@@ -129,8 +130,8 @@ export default defineNuxtConfig({
           },
         } : undefined),
     },
-    logLevel: 5,
-    debug: false,
+    logLevel: 4,
+    modules: [rpc()],
   },
   typescript: {
     tsConfig: {
@@ -161,8 +162,6 @@ export default defineNuxtConfig({
       },
     ],
   },
-  logLevel: 'verbose',
-
   devtools: { enabled: false },
   ssr: false,
 });

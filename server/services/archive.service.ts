@@ -3,8 +3,8 @@ import { media } from '../libs/drizzle/schema';
 import { RequestContext } from '../libs/trpc/trpc';
 import DB from '../providers/DB';
 
-export default (context: RequestContext) => {
-  const db = DB.inject(context);
+export default () => {
+  const db = DB();
   const getShowcaseList = async (userId: string) => {
     const rows = await db.query.media.findMany({
       where: eq(media.userId, userId),
