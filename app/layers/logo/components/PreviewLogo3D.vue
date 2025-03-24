@@ -21,7 +21,7 @@ removeImageBackground(imgSrc.value, { isDev: config.isDev })
       >
         <CardItem
           :translate-z="100"
-          class="mt-4 w-full h-[430px]"
+          class="w-full max-h-full h-[430px]"
         >
           <TheImage :src="imgSrc" />
         </CardItem>
