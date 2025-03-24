@@ -20,6 +20,7 @@ export default {
   },
   plugins: [
     require('tailwindcss-animate'),
+    require('@inspira-ui/plugins'),
     require('@tailwindcss/container-queries'),
     require('@tailwindcss/typography'),
   ],

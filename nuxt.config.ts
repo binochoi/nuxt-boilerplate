@@ -45,6 +45,8 @@ export default defineNuxtConfig({
     '@ant-design-vue/nuxt',
     '@primevue/nuxt-module',
     '@nuxtjs/i18n',
+    'shadcn-nuxt',
+    'nuxt-workers',
   ],
   i18n: {
     vueI18n: './app/i18n/config.ts',
@@ -80,6 +82,10 @@ export default defineNuxtConfig({
 
   pinia: {
     storesDirs: ['./app/stores/**'],
+  },
+  shadcn: {
+    prefix: '',
+    componentDir: './app/components/ui/lib',
   },
   alias: {
     app: fileURLToPath(new URL('./app', import.meta.url)),
