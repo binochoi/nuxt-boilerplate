@@ -155,6 +155,9 @@ export default defineNuxtConfig({
     },
   },
   vite: {
+    worker: {
+      format: 'es',
+    },
     plugins: [
       {
         name: 'configure-response-headers',
