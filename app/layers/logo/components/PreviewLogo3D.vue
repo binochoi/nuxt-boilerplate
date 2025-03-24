@@ -23,17 +23,19 @@ removeImageBackground(imgSrc.value, { isDev: config.isDev })
           :translate-z="100"
           class="w-full max-h-full h-[430px]"
         >
-          <TheImage :src="imgSrc" />
+          <TheImage
+            :src="imgSrc"
+            :disableAnimation="true"
+          />
         </CardItem>
-        <div class="mt-20 flex items-center justify-between">
+        <div
+          class="mt-20 flex items-center justify-between transition-opacity"
+          :class="{ 'opacity-0': isBgRemoved }"
+        >
           <LogoPreviewButton
-            :disabled="!isBgRemoved"
+            :disabled="true"
           >
-            <div v-if="isBgRemoved">
-              도안 보기
-            </div>
             <div
-              v-else
               class="flex gap-2"
             >
               배경 제거중 <TheSpinner
