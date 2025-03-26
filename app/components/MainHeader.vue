@@ -13,19 +13,22 @@ const menuList = computed(() => [
       router.push('/pricing');
     },
   },
-  {
-    label: t('label.generate'),
-    class: isSelected('/generate') && selectedClass,
-    command() {
-      router.push('/generate');
+  ...(auth.session.value ? [
+    {
+      label: t('label.generate'),
+      class: isSelected('/generate') && selectedClass,
+      command() {
+        router.push('/generate');
+      },
     },
-  },
-  ...(auth.session.value ? [{
-    label: t('label.archives'),
-    command() {
-      router.push('/archives');
+    {
+      label: t('label.archives'),
+      class: isSelected('/archives') && selectedClass,
+      command() {
+        router.push('/archives');
+      },
     },
-  }] : []),
+  ] : []),
   auth.session.value ? {
     label: t('label.logout'),
     command: async () => {

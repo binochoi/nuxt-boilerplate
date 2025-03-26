@@ -35,7 +35,7 @@ export default () => {
   if (import.meta.client) {
     client.$store.listen('$sessionSignal', async (signal) => {
       if (!signal) return;
-      await fetchSession();
+      fetchSession();
     });
   }
   return {

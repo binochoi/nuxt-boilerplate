@@ -6,7 +6,7 @@ export default defineNuxtPlugin({
     // eslint-disable-next-line no-param-reassign
     nuxtApp.payload.isCached = Boolean(useRequestEvent()?.context.cache);
     if (nuxtApp.payload.serverRendered && !nuxtApp.payload.prerenderedAt && !nuxtApp.payload.isCached) {
-      await useAuth().fetchSession();
+      useAuth().fetchSession();
     }
   },
 });

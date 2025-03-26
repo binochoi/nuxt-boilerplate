@@ -7,6 +7,11 @@ const config = useBuildtimeConfig();
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   runtimeConfig: config,
+  routeRules: {
+    '/*': {
+      prerender: true,
+    },
+  },
   imports: {
     dirs: [
       './types/*.d.ts',
