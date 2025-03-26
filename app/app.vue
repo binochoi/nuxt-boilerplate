@@ -13,6 +13,10 @@ useHead({
     spellcheck="false"
   >
     <NuxtLayout>
+      <NuxtLoadingIndicator
+        color="hsla(var(--color-secondary), 0.7)"
+        :height="3"
+      />
       <NuxtPage />
     </NuxtLayout>
   </div>
