@@ -2,11 +2,13 @@
 import PreviewLogo3D from '~/layers/logo/components/PreviewLogo3D.vue';
 
 const config = useRuntimeConfig();
+const id = useRouteParams<string>('id');
 </script>
 <template>
   <div class="w-full h-full flex justify-center items-center bg-gray-900">
     <PreviewLogo3D
-      :imgSrc="`${config.public.media.baseURL}/generated/raw/5257bef2-a5f0-4e59-9776-09dfdc9c30f6`"
+      class="animate-in fade-in slide-out-to-bottom-2 duration-500"
+      :imgSrc="`${config.public.media.baseURL}/generated/raw/${id}`"
     />
   </div>
 </template>

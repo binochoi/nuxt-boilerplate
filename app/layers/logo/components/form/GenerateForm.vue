@@ -32,14 +32,8 @@ const submit = async () => {
     },
   });
   user.value.credit -= 1;
-  const imageURL = `${config.public.media.baseURL}/generated/raw/${fileId}`;
-  // eslint-disable-next-line no-console
-  const removed = await removeImageBackground(imageURL, { isDev: config.public.isDev });
-  console.log({
-    imageURL,
-    removed,
-  });
   loading.value = false;
+  router.push(`/logo/${fileId}`);
 };
 </script>
 
