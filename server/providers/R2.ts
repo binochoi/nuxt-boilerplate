@@ -1,4 +1,4 @@
-import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
+import { DeleteObjectCommand, PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 
 export default () => {
   const config = useRuntimeConfig();
@@ -26,6 +26,16 @@ export default () => {
         Body: body,
         ChecksumAlgorithm: undefined,
         ContentMD5: undefined,
+      });
+      return client.send(cmd);
+    },
+    remove: async ({ bucketName, key }: {
+      bucketName: string,
+      key: string,
+    }) => {
+      const cmd = new DeleteObjectCommand({
+        Bucket: bucketName,
+        Key: key,
       });
       return client.send(cmd);
     },
