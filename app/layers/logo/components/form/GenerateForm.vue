@@ -8,13 +8,18 @@ const { t } = useI18n();
 const { form, canSubmit } = useLogoGenerateForm();
 const loading = ref(false);
 const { api } = useRPC();
-const config = useRuntimeConfig();
 const { user } = useAuth();
+const preventLeave = (e: BeforeUnloadEvent) => {
+  e.preventDefault();
+  e.returnValue = '';
+};
 const submit = async () => {
   if (
     !user.value
     || !form.style
   ) {
+    await showAlert(t('ask_login_required'));
+    router.push('/login');
     return;
   }
   if (!user.value.credit) {
@@ -33,8 +38,11 @@ const submit = async () => {
   });
   user.value.credit -= 1;
   loading.value = false;
+  window.removeEventListener('beforeunload', preventLeave);
   router.push(`/logo/${fileId}`);
 };
+onMounted(() => window.addEventListener('beforeunload', preventLeave));
+onUnmounted(() => window.removeEventListener('beforeunload', preventLeave));
 </script>
 
 <template>
