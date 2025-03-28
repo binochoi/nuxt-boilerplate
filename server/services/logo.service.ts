@@ -25,7 +25,7 @@ export default () => {
       throw e;
     }
   };
-  const generate = async (prompt: LogoPrompt, userId: string) => {
+  const generateAndUpload = async (prompt: LogoPrompt, userId: string) => {
     const { imageLink } = await generateImageLink(prompt);
     if (!imageLink) {
       throw createError({
@@ -57,7 +57,7 @@ export default () => {
   `);
 
   return {
-    generate,
+    generateAndUpload,
     suggestLogoShape,
   };
 };

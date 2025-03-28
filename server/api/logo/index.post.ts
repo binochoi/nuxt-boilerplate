@@ -18,5 +18,5 @@ export default defineEventHandler(async (e) => {
   }
   const logo = LogoService();
   const logoPrompt = await readValidatedBody(e, schema.body);
-  return logo.generate(logoPrompt, user.id);
+  return logo.generateAndUpload(logoPrompt, user.id);
 });
