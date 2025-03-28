@@ -33,6 +33,7 @@ export default defineI18nConfig(() => ({
           description: '10% off',
         },
       },
+      ask_logout_success: 'You have been logged out successfully. thank you',
     },
     ko: {
       slogan: '로고 생성기',
@@ -63,6 +64,7 @@ export default defineI18nConfig(() => ({
           description: '10% 할인',
         },
       },
+      ask_logout_success: '로그아웃 되었습니다. 감사합니다',
     },
   },
 }));
