@@ -100,9 +100,6 @@ export default defineNuxtConfig({
     typedPages: true,
   },
   compatibilityDate: '2024-11-01',
-  build: {
-    transpile: ['trpc-nuxt'],
-  },
   app: {
     buildAssetsDir: '_assets',
     head: {
